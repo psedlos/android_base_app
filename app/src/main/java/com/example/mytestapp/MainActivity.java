@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                     btnwheels[i].setBackgroundColor(Color.green(1));}
                 else if(trailers[trailer_number].wheels[i].status == trailer.statuses.ORANGE){
                     btnwheels[i].setBackgroundColor(Color.red(10));}
-                else if(trailers[trailer_number].wheels[i].status == trailer.statuses.ORANGE){
+                else if(trailers[trailer_number].wheels[i].status == trailer.statuses.RED){
                     btnwheels[i].setBackgroundColor(Color.red(1));}
 
 
