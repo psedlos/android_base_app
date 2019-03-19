@@ -25,16 +25,18 @@ public class MainActivity extends AppCompatActivity {
     ImageButton btn5th;
     ImageButton[] btnwheels;
     public TableLayout wheels_table;
-    public trailer[] trailers;
+    public Trailer[] trailers;
     int which_trailer_show;
 
-    public void show_trailer(int trailer_number) {
+    static String TAG = "MainActivity";
+
+    public void show_trailer(int trailer_number, TableLayout wheels_table, Trailer[] trailers, ImageButton[] btnwheels) {
         if (trailer_number<0 || trailer_number >6) {
             wheels_table.setVisibility(View.INVISIBLE);
         }
         else{
             wheels_table.setVisibility(View.VISIBLE);
-            for(int i = 0 ; i<64 ; i++){
+            /*for(int i = 0 ; i<64 ; i++){
                 if(trailers[trailer_number].wheels[i].status == trailer.statuses.GREEN){
                     btnwheels[i].setBackgroundColor(Color.green(1));}
                 else if(trailers[trailer_number].wheels[i].status == trailer.statuses.ORANGE){
@@ -43,11 +45,9 @@ public class MainActivity extends AppCompatActivity {
                     btnwheels[i].setBackgroundColor(Color.red(1));}
 
 
-            }
+            }*/
         }
     }
-    static String TAG = "MainActivity";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,18 +62,24 @@ public class MainActivity extends AppCompatActivity {
         ImageButton btn3rd = (findViewById(R.id.third_platform));
         ImageButton btn4th = (findViewById(R.id.fourth_platform));
         ImageButton btn5th = (findViewById(R.id.fifth_platform));
-        ImageButton[] btnwheels = {(findViewById(R.id.tyre00)),(findViewById(R.id.tyre01)),(findViewById(R.id.tyre02)),(findViewById(R.id.tyre03)),(findViewById(R.id.tyre04)),(findViewById(R.id.tyre05)),(findViewById(R.id.tyre06)),(findViewById(R.id.tyre07)),(findViewById(R.id.tyre08)),(findViewById(R.id.tyre09)),(findViewById(R.id.tyre10)),(findViewById(R.id.tyre11)),(findViewById(R.id.tyre12)),(findViewById(R.id.tyre13)),(findViewById(R.id.tyre14)),(findViewById(R.id.tyre15)),(findViewById(R.id.tyre16)),(findViewById(R.id.tyre17)),(findViewById(R.id.tyre18)),(findViewById(R.id.tyre19)),(findViewById(R.id.tyre20)),(findViewById(R.id.tyre21)),(findViewById(R.id.tyre22)),(findViewById(R.id.tyre23)),(findViewById(R.id.tyre24)),(findViewById(R.id.tyre25)),(findViewById(R.id.tyre26)),(findViewById(R.id.tyre27)),(findViewById(R.id.tyre28)),(findViewById(R.id.tyre29)),(findViewById(R.id.tyre30)),(findViewById(R.id.tyre31)),(findViewById(R.id.tyre32)),(findViewById(R.id.tyre33)),(findViewById(R.id.tyre34)),(findViewById(R.id.tyre35)),(findViewById(R.id.tyre36)),(findViewById(R.id.tyre37)),(findViewById(R.id.tyre38)),(findViewById(R.id.tyre39)),(findViewById(R.id.tyre40)),(findViewById(R.id.tyre41)),(findViewById(R.id.tyre42)),(findViewById(R.id.tyre43)),(findViewById(R.id.tyre44)),(findViewById(R.id.tyre45)),(findViewById(R.id.tyre46)),(findViewById(R.id.tyre47)),(findViewById(R.id.tyre48)),(findViewById(R.id.tyre49)),(findViewById(R.id.tyre50)),(findViewById(R.id.tyre51)),(findViewById(R.id.tyre52)),(findViewById(R.id.tyre53)),(findViewById(R.id.tyre54)),(findViewById(R.id.tyre55)),(findViewById(R.id.tyre56)),(findViewById(R.id.tyre57)),(findViewById(R.id.tyre58)),(findViewById(R.id.tyre59)),(findViewById(R.id.tyre60)),(findViewById(R.id.tyre61)),(findViewById(R.id.tyre62)),(findViewById(R.id.tyre63))};
-        TableLayout wheels_table = (findViewById(R.id.wheels_table));
+        final ImageButton[] btnwheels = {(findViewById(R.id.tyre00)),(findViewById(R.id.tyre01)),(findViewById(R.id.tyre02)),(findViewById(R.id.tyre03)),(findViewById(R.id.tyre04)),(findViewById(R.id.tyre05)),(findViewById(R.id.tyre06)),(findViewById(R.id.tyre07)),(findViewById(R.id.tyre08)),(findViewById(R.id.tyre09)),(findViewById(R.id.tyre10)),(findViewById(R.id.tyre11)),(findViewById(R.id.tyre12)),(findViewById(R.id.tyre13)),(findViewById(R.id.tyre14)),(findViewById(R.id.tyre15)),(findViewById(R.id.tyre16)),(findViewById(R.id.tyre17)),(findViewById(R.id.tyre18)),(findViewById(R.id.tyre19)),(findViewById(R.id.tyre20)),(findViewById(R.id.tyre21)),(findViewById(R.id.tyre22)),(findViewById(R.id.tyre23)),(findViewById(R.id.tyre24)),(findViewById(R.id.tyre25)),(findViewById(R.id.tyre26)),(findViewById(R.id.tyre27)),(findViewById(R.id.tyre28)),(findViewById(R.id.tyre29)),(findViewById(R.id.tyre30)),(findViewById(R.id.tyre31)),(findViewById(R.id.tyre32)),(findViewById(R.id.tyre33)),(findViewById(R.id.tyre34)),(findViewById(R.id.tyre35)),(findViewById(R.id.tyre36)),(findViewById(R.id.tyre37)),(findViewById(R.id.tyre38)),(findViewById(R.id.tyre39)),(findViewById(R.id.tyre40)),(findViewById(R.id.tyre41)),(findViewById(R.id.tyre42)),(findViewById(R.id.tyre43)),(findViewById(R.id.tyre44)),(findViewById(R.id.tyre45)),(findViewById(R.id.tyre46)),(findViewById(R.id.tyre47)),(findViewById(R.id.tyre48)),(findViewById(R.id.tyre49)),(findViewById(R.id.tyre50)),(findViewById(R.id.tyre51)),(findViewById(R.id.tyre52)),(findViewById(R.id.tyre53)),(findViewById(R.id.tyre54)),(findViewById(R.id.tyre55)),(findViewById(R.id.tyre56)),(findViewById(R.id.tyre57)),(findViewById(R.id.tyre58)),(findViewById(R.id.tyre59)),(findViewById(R.id.tyre60)),(findViewById(R.id.tyre61)),(findViewById(R.id.tyre62)),(findViewById(R.id.tyre63))};
+        final TableLayout wheels_table = (findViewById(R.id.wheels_table));
 
         Log.i(TAG, "It is alive!");
-        trailer[] trailers = new trailer[6];
+        final Trailer[] trailers = new Trailer[6];
+        for (int i = 0; i<trailers.length; i++){
+            trailers[i]=new Trailer();
+            for(int j = 0 ; j<trailers[i].wheels.length; j++) {
+                trailers[i].wheels[j] = trailers[i].new Wheel();
+        }}
         which_trailer_show  = -1;
-        show_trailer(which_trailer_show);
-        trailers[1].wheels[10].updateWheel(40,10, trailer.errors.NON);
-        trailers[2].wheels[10].updateWheel(40,10, trailer.errors.NON);
-        trailers[1].wheels[19].updateWheel(40,10, trailer.errors.NON);
-        trailers[1].wheels[30].updateWheel(40,10, trailer.errors.NON);
-        trailers[1].wheels[1].updateWheel(40,10, trailer.errors.NON);
+        show_trailer(which_trailer_show, wheels_table, trailers, btnwheels);
+        trailers[1].wheels[10].updateWheel(40,10, Trailer.errors.NON);
+        trailers[2].wheels[10].updateWheel(40,10, Trailer.errors.NON);
+        trailers[1].wheels[19].updateWheel(40,10, Trailer.errors.NON);
+        trailers[1].wheels[30].updateWheel(40,10, Trailer.errors.NON);
+        trailers[1].wheels[1].updateWheel(40,10, Trailer.errors.NON);
+
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View w){
                 Log.i(TAG, "Button 0");
                 which_trailer_show = 0;
-                show_trailer(which_trailer_show );
+                show_trailer(which_trailer_show , wheels_table, trailers, btnwheels);
             }
         });
 
@@ -96,14 +102,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View w){
                 Log.i(TAG, "Button 1");
-                show_trailer(1);
-            }
+                which_trailer_show = 1;
+                show_trailer(which_trailer_show , wheels_table, trailers, btnwheels);            }
         });
 
         btn2nd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View w){
                 Log.i(TAG, "Button 2");
+                which_trailer_show = 2;
+                show_trailer(which_trailer_show , wheels_table, trailers, btnwheels);
             }
         });
 
@@ -111,6 +119,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View w){
                 Log.i(TAG, "Button 3");
+                which_trailer_show = 3;
+                show_trailer(which_trailer_show , wheels_table, trailers, btnwheels);
             }
         });
 
@@ -118,6 +128,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View w){
                 Log.i(TAG, "Button 4");
+                which_trailer_show = 4;
+                show_trailer(which_trailer_show , wheels_table, trailers, btnwheels);
             }
         });
 
@@ -125,6 +137,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View w){
                 Log.i(TAG, "Button 5");
+                which_trailer_show = 5;
+                show_trailer(which_trailer_show , wheels_table, trailers, btnwheels);
             }
         });
     }
@@ -150,4 +164,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }
