@@ -36,16 +36,16 @@ public class MainActivity extends AppCompatActivity {
         }
         else{
             wheels_table.setVisibility(View.VISIBLE);
-            /*for(int i = 0 ; i<64 ; i++){
-                if(trailers[trailer_number].wheels[i].status == trailer.statuses.GREEN){
+            for(int i = 0 ; i<64 ; i++){
+                if(trailers[trailer_number].wheels[i].status == Trailer.statuses.GREEN){
                     btnwheels[i].setBackgroundColor(Color.green(1));}
-                else if(trailers[trailer_number].wheels[i].status == trailer.statuses.ORANGE){
+                else if(trailers[trailer_number].wheels[i].status == Trailer.statuses.ORANGE){
                     btnwheels[i].setBackgroundColor(Color.red(10));}
-                else if(trailers[trailer_number].wheels[i].status == trailer.statuses.RED){
+                else if(trailers[trailer_number].wheels[i].status == Trailer.statuses.RED){
                     btnwheels[i].setBackgroundColor(Color.red(1));}
 
 
-            }*/
+            }
         }
     }
     @Override
