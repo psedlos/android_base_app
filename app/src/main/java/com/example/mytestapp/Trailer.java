@@ -5,10 +5,10 @@ import android.view.View;
 
 public class Trailer {
     public class Wheel extends Trailer{
-        double temperature;
-        double pressure;
-        statuses status;
-        errors error;
+        double temperature=0;
+        double pressure=0;
+        statuses status = statuses.GREEN;
+        errors error =errors.NON;
 
         public double getTemp(){return temperature;}
         public double getPress(){return pressure;}
@@ -20,6 +20,7 @@ public class Trailer {
 //        public void setError(statuses stat){this.status=stat;}
         //public void updateWheel(double temp, double press){this.temperature = temp; this.pressure = press;}
         void updateWheel(double temp, double press, errors err){this.temperature = temp; this.pressure = press; this.error = err;}
+        void updateWheel(double temp, double press, errors err, statuses status){this.temperature = temp; this.pressure = press; this.error = err; this.status = status;}
 
         /*public Wheel(double temperature, double pressure, statuses status, errors error) {
             super();
@@ -29,10 +30,10 @@ public class Trailer {
             this.error = error;
         }*/
         Wheel() {
-            this.temperature = 0;
-            this.pressure=0;
-            this.status = statuses.BLACK;
-            this.error = errors.MPCB;
+//            this.temperature = 0;
+//            this.pressure=0;
+//            this.status = statuses.BLACK;
+//            this.error = errors.MPCB;
         }
     }
 

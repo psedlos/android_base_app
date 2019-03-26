@@ -44,7 +44,6 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -93,442 +92,493 @@
 
     </TableLayout>
 
-
-    <TableLayout
-        android:id="@+id/wheels_table"
+    <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="409dp"
-        android:layout_height="263dp"
+        android:layout_height="267dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:orientation="vertical"
-        android:scrollbars="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/trailers_table"
-        tools:layout_editor_absoluteX="0dp">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageButton
-                android:id="@+id/tyre56"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre57"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre58"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre59"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre60"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre61"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre62"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre63"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageButton
-                android:id="@+id/tyre48"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre49"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre50"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre51"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre52"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre53"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre54"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre55"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageButton
-                android:id="@+id/tyre32"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre33"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre34"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre35"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre36"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre37"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre38"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre39"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageButton
-                android:id="@+id/tyre00"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre01"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre02"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre03"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre04"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre05"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre06"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre07"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageButton
-                android:id="@+id/tyre24"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre25"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre26"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre27"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre28"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre29"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre30"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre31"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageButton
-                android:id="@+id/tyre40"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre41"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre42"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre43"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre44"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre45"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre46"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre47"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageButton
-                android:id="@+id/tyre08"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre09"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre10"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre11"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre12"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre13"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre14"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre15"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageButton
-                android:id="@+id/tyre16"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre17"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre18"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre19"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre20"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre21"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre22"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-
-            <ImageButton
-                android:id="@+id/tyre23"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                app:srcCompat="@android:drawable/star_big_off" />
-        </TableRow>
-
-    </TableLayout>
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_weight="1"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/trailers_table">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+            <TableLayout
+                android:id="@+id/wheels_table"
+                android:layout_width="409dp"
+                android:layout_height="418dp"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical"
+                android:scrollbars="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/trailers_table"
+                tools:layout_editor_absoluteX="0dp">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:id="@+id/tyre56"
+                        android:contentDescription="Tyre_state"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre57"
+                        android:contentDescription="Tyre_state"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre58"
+                        android:contentDescription="Tyre_state"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre59"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre60"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre61"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre62"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre63"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:id="@+id/tyre48"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre49"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre50"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre51"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre52"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre53"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre54"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre55"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+                </TableRow>
+
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:id="@+id/tyre40"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre41"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre42"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre43"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre44"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre45"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre46"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre47"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:id="@+id/tyre32"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre33"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre34"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre35"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre36"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre37"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre38"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre39"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:id="@+id/tyre24"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre25"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre26"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre27"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre28"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre29"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre30"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre31"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:id="@+id/tyre16"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre17"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre18"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre19"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre20"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre21"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre22"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre23"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:id="@+id/tyre08"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre09"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre10"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre11"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre12"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre13"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre14"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre15"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:id="@+id/tyre00"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre01"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre02"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre03"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre04"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre05"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre06"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+
+                    <ImageButton
+                        android:id="@+id/tyre07"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        app:srcCompat="@android:drawable/star_big_off" />
+                </TableRow>
+
+            </TableLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <view
+        android:id="@+id/tyreinfoview"
+        class="android.support.constraint.Group"
+        id="@+id/view"
+        android:layout_width="305dp"
+        android:layout_height="102dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+
+    <TextView
+        android:id="@+id/tyretext"
+        android:layout_width="121dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginLeft="104dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/tyre__text"
+        app:layout_constraintStart_toStartOf="@+id/tyreinfoview"
+        app:layout_constraintTop_toTopOf="@+id/tyreinfoview" />
 
 </android.support.constraint.ConstraintLayout>
