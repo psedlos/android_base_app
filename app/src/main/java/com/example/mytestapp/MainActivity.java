@@ -44,11 +44,13 @@ public class MainActivity extends AppCompatActivity {
             tyre_info_view.setVisibility(View.INVISIBLE);
             for(int i = 0 ; i<64 ; i++){
                 if(trailers[trailer_number].wheels[i].status == Trailer.statuses.GREEN){
-                    btnwheels[i].setBackgroundColor(Color.green(1));}
+                    btnwheels[i].setImageResource(R.mipmap.green_tyre);}
                 else if(trailers[trailer_number].wheels[i].status == Trailer.statuses.ORANGE){
-                    btnwheels[i].setBackgroundColor(Color.red(10));}
+                    btnwheels[i].setImageResource(R.mipmap.yellow_tyre);}
                 else if(trailers[trailer_number].wheels[i].status == Trailer.statuses.RED){
-                    btnwheels[i].setBackgroundColor(Color.red(1));}
+                    btnwheels[i].setImageResource(R.mipmap.red_tyre);}
+                else if(trailers[trailer_number].wheels[i].status == Trailer.statuses.BLACK){
+                    btnwheels[i].setImageResource(R.mipmap.tyre_black);}
 
 
             }
