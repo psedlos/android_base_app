@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
             wheels_table.setVisibility(View.VISIBLE);
             tyre_text.setVisibility(View.INVISIBLE);
             for(int i = 0 ; i<64 ; i++){
+                btnwheels[i].setBackgroundColor(getResources().getColor(R.color.buttonNormalBackground));
                 if(trailers[trailer_number].wheels[i].status == Trailer.statuses.GREEN){
                     btnwheels[i].setImageResource(R.mipmap.green_tyre);}
                 else if(trailers[trailer_number].wheels[i].status == Trailer.statuses.ORANGE){
@@ -57,10 +58,15 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-    public void show_tyre(int trailer_number, int tyre_number, Trailer[] trailers, TextView tyre_text){
+    public void show_tyre(int trailer_number, int tyre_number, Trailer[] trailers, TextView tyre_text, ImageButton[] btnwheels){
         tyre_text.setVisibility(View.VISIBLE);
-            tyre_description = "Pressure: " + trailers[trailer_number].wheels[tyre_number].getPress() + "\n" + "Temperature: " + trailers[trailer_number].wheels[tyre_number].getTemp();
-            tyre_text.setText(tyre_description);
+        for (int i = 0; i < btnwheels.length; i++) {
+            btnwheels[i].setBackgroundColor(getResources().getColor(R.color.buttonNormalBackground));
+        }
+        btnwheels[tyre_number].setBackgroundColor(getResources().getColor(R.color.buttonSelectedBackground));
+
+        tyre_description = "Pressure: " + trailers[trailer_number].wheels[tyre_number].getPress() + "\n" + "Temperature: " + trailers[trailer_number].wheels[tyre_number].getTemp();
+        tyre_text.setText(tyre_description);
     }
 
     @Override
@@ -108,70 +114,70 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnwheels[0].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 0, trailers, tyre_text);}});
-        btnwheels[1].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 1, trailers, tyre_text);}});
-        btnwheels[2].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 2, trailers, tyre_text);}});
-        btnwheels[3].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 3, trailers, tyre_text);}});
-        btnwheels[4].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 4, trailers, tyre_text);}});
-        btnwheels[5].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 5, trailers, tyre_text);}});
-        btnwheels[6].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 6, trailers, tyre_text);}});
-        btnwheels[7].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 7, trailers, tyre_text);}});
-        btnwheels[8].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 8, trailers, tyre_text);}});
-        btnwheels[9].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 9, trailers, tyre_text);}});
-        btnwheels[10].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 10, trailers, tyre_text);}});
-        btnwheels[11].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 11, trailers, tyre_text);}});
-        btnwheels[12].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 12, trailers, tyre_text);}});
-        btnwheels[13].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 13, trailers, tyre_text);}});
-        btnwheels[14].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 14, trailers, tyre_text);}});
-        btnwheels[15].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 15, trailers, tyre_text);}});
-        btnwheels[16].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 16, trailers, tyre_text);}});
-        btnwheels[17].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 17, trailers, tyre_text);}});
-        btnwheels[18].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 18, trailers, tyre_text);}});
-        btnwheels[19].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 19, trailers, tyre_text);}});
-        btnwheels[20].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 20, trailers, tyre_text);}});
-        btnwheels[21].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 21, trailers, tyre_text);}});
-        btnwheels[22].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 22, trailers, tyre_text);}});
-        btnwheels[23].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 23, trailers, tyre_text);}});
-        btnwheels[24].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 24, trailers, tyre_text);}});
-        btnwheels[25].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 25, trailers, tyre_text);}});
-        btnwheels[26].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 26, trailers, tyre_text);}});
-        btnwheels[27].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 27, trailers, tyre_text);}});
-        btnwheels[28].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 28, trailers, tyre_text);}});
-        btnwheels[29].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 29, trailers, tyre_text);}});
-        btnwheels[30].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 30, trailers, tyre_text);}});
-        btnwheels[31].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 31, trailers, tyre_text);}});
-        btnwheels[32].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 32, trailers, tyre_text);}});
-        btnwheels[33].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 33, trailers, tyre_text);}});
-        btnwheels[34].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 34, trailers, tyre_text);}});
-        btnwheels[35].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 35, trailers, tyre_text);}});
-        btnwheels[36].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 36, trailers, tyre_text);}});
-        btnwheels[37].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 37, trailers, tyre_text);}});
-        btnwheels[38].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 38, trailers, tyre_text);}});
-        btnwheels[39].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 39, trailers, tyre_text);}});
-        btnwheels[40].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 40, trailers, tyre_text);}});
-        btnwheels[41].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 41, trailers, tyre_text);}});
-        btnwheels[42].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 42, trailers, tyre_text);}});
-        btnwheels[43].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 43, trailers, tyre_text);}});
-        btnwheels[44].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 44, trailers, tyre_text);}});
-        btnwheels[45].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 45, trailers, tyre_text);}});
-        btnwheels[46].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 46, trailers, tyre_text);}});
-        btnwheels[47].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 47, trailers, tyre_text);}});
-        btnwheels[48].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 48, trailers, tyre_text);}});
-        btnwheels[49].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 49, trailers, tyre_text);}});
-        btnwheels[50].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 50, trailers, tyre_text);}});
-        btnwheels[51].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 51, trailers, tyre_text);}});
-        btnwheels[52].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 52, trailers, tyre_text);}});
-        btnwheels[53].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 53, trailers, tyre_text);}});
-        btnwheels[54].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 54, trailers, tyre_text);}});
-        btnwheels[55].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 55, trailers, tyre_text);}});
-        btnwheels[56].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 56, trailers, tyre_text);}});
-        btnwheels[57].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 57, trailers, tyre_text);}});
-        btnwheels[58].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 58, trailers, tyre_text);}});
-        btnwheels[59].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 59, trailers, tyre_text);}});
-        btnwheels[60].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 60, trailers, tyre_text);}});
-        btnwheels[61].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 61, trailers, tyre_text);}});
-        btnwheels[62].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 62, trailers, tyre_text);}});
-        btnwheels[63].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 63, trailers, tyre_text);}});
+        btnwheels[0].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 0, trailers, tyre_text, btnwheels);}});
+        btnwheels[1].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 1, trailers, tyre_text, btnwheels);}});
+        btnwheels[2].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 2, trailers, tyre_text, btnwheels);}});
+        btnwheels[3].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 3, trailers, tyre_text, btnwheels);}});
+        btnwheels[4].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 4, trailers, tyre_text, btnwheels);}});
+        btnwheels[5].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 5, trailers, tyre_text, btnwheels);}});
+        btnwheels[6].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 6, trailers, tyre_text, btnwheels);}});
+        btnwheels[7].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 7, trailers, tyre_text, btnwheels);}});
+        btnwheels[8].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 8, trailers, tyre_text, btnwheels);}});
+        btnwheels[9].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 9, trailers, tyre_text, btnwheels);}});
+        btnwheels[10].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 10, trailers, tyre_text, btnwheels);}});
+        btnwheels[11].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 11, trailers, tyre_text, btnwheels);}});
+        btnwheels[12].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 12, trailers, tyre_text, btnwheels);}});
+        btnwheels[13].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 13, trailers, tyre_text, btnwheels);}});
+        btnwheels[14].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 14, trailers, tyre_text, btnwheels);}});
+        btnwheels[15].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 15, trailers, tyre_text, btnwheels);}});
+        btnwheels[16].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 16, trailers, tyre_text, btnwheels);}});
+        btnwheels[17].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 17, trailers, tyre_text, btnwheels);}});
+        btnwheels[18].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 18, trailers, tyre_text, btnwheels);}});
+        btnwheels[19].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 19, trailers, tyre_text, btnwheels);}});
+        btnwheels[20].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 20, trailers, tyre_text, btnwheels);}});
+        btnwheels[21].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 21, trailers, tyre_text, btnwheels);}});
+        btnwheels[22].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 22, trailers, tyre_text, btnwheels);}});
+        btnwheels[23].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 23, trailers, tyre_text, btnwheels);}});
+        btnwheels[24].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 24, trailers, tyre_text, btnwheels);}});
+        btnwheels[25].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 25, trailers, tyre_text, btnwheels);}});
+        btnwheels[26].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 26, trailers, tyre_text, btnwheels);}});
+        btnwheels[27].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 27, trailers, tyre_text, btnwheels);}});
+        btnwheels[28].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 28, trailers, tyre_text, btnwheels);}});
+        btnwheels[29].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 29, trailers, tyre_text, btnwheels);}});
+        btnwheels[30].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 30, trailers, tyre_text, btnwheels);}});
+        btnwheels[31].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 31, trailers, tyre_text, btnwheels);}});
+        btnwheels[32].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 32, trailers, tyre_text, btnwheels);}});
+        btnwheels[33].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 33, trailers, tyre_text, btnwheels);}});
+        btnwheels[34].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 34, trailers, tyre_text, btnwheels);}});
+        btnwheels[35].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 35, trailers, tyre_text, btnwheels);}});
+        btnwheels[36].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 36, trailers, tyre_text, btnwheels);}});
+        btnwheels[37].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 37, trailers, tyre_text, btnwheels);}});
+        btnwheels[38].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 38, trailers, tyre_text, btnwheels);}});
+        btnwheels[39].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 39, trailers, tyre_text, btnwheels);}});
+        btnwheels[40].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 40, trailers, tyre_text, btnwheels);}});
+        btnwheels[41].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 41, trailers, tyre_text, btnwheels);}});
+        btnwheels[42].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 42, trailers, tyre_text, btnwheels);}});
+        btnwheels[43].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 43, trailers, tyre_text, btnwheels);}});
+        btnwheels[44].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 44, trailers, tyre_text, btnwheels);}});
+        btnwheels[45].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 45, trailers, tyre_text, btnwheels);}});
+        btnwheels[46].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 46, trailers, tyre_text, btnwheels);}});
+        btnwheels[47].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 47, trailers, tyre_text, btnwheels);}});
+        btnwheels[48].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 48, trailers, tyre_text, btnwheels);}});
+        btnwheels[49].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 49, trailers, tyre_text, btnwheels);}});
+        btnwheels[50].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 50, trailers, tyre_text, btnwheels);}});
+        btnwheels[51].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 51, trailers, tyre_text, btnwheels);}});
+        btnwheels[52].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 52, trailers, tyre_text, btnwheels);}});
+        btnwheels[53].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 53, trailers, tyre_text, btnwheels);}});
+        btnwheels[54].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 54, trailers, tyre_text, btnwheels);}});
+        btnwheels[55].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 55, trailers, tyre_text, btnwheels);}});
+        btnwheels[56].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 56, trailers, tyre_text, btnwheels);}});
+        btnwheels[57].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 57, trailers, tyre_text, btnwheels);}});
+        btnwheels[58].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 58, trailers, tyre_text, btnwheels);}});
+        btnwheels[59].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 59, trailers, tyre_text, btnwheels);}});
+        btnwheels[60].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 60, trailers, tyre_text, btnwheels);}});
+        btnwheels[61].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 61, trailers, tyre_text, btnwheels);}});
+        btnwheels[62].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 62, trailers, tyre_text, btnwheels);}});
+        btnwheels[63].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 63, trailers, tyre_text, btnwheels);}});
 
 
         btn0st.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){

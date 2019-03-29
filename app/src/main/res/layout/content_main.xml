@@ -12,9 +12,9 @@
         android:id="@+id/scrollViewAllScreen"
         android:layout_width="400dp"
         android:layout_height="800dp"
+        android:layout_marginLeft="0dp"
         android:layout_marginTop="0dp"
         android:layout_marginEnd="0dp"
-        android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
         android:layout_weight="1"
         android:scrollbars="none"
@@ -25,17 +25,12 @@
         <RelativeLayout
             android:id="@+id/wholemainscreen"
             class="android.support.constraint.Group"
-            android:layout_width="400dp"
-            android:layout_height="800dp"
-            android:layout_marginStart="0dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginRight="0dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="parent"
-            android:orientation="vertical">
+            app:layout_constraintTop_toBottomOf="parent">
 
             <ImageButton
                 android:id="@+id/truck"
@@ -80,7 +75,7 @@
                         android:layout_width="77dp"
                         android:layout_height="84dp"
                         android:contentDescription="Show First Platform"
-                        app:srcCompat="@android:drawable/sym_contact_card" />
+                        app:srcCompat="@mipmap/tralier2ccu_eng" />
 
                     <ImageButton
                         android:id="@+id/second_platform"
