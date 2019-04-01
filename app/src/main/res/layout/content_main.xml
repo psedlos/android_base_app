@@ -54,7 +54,7 @@
 
             <TableLayout
                 android:id="@+id/trailers_table"
-                android:layout_width="385dp"
+                android:layout_width="wrap_content"
                 android:layout_height="84dp"
                 android:layout_below="@+id/truck"
                 android:layout_marginStart="8dp"
@@ -62,49 +62,95 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
+                android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="@+id/truck"
                 app:layout_constraintStart_toStartOf="@+id/truck"
                 app:layout_constraintTop_toTopOf="@+id/truck">
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:scrollbars="horizontal">
 
                     <ImageButton
                         android:id="@+id/first_platform"
-                        android:layout_width="77dp"
+                        android:layout_width="50dp"
                         android:layout_height="84dp"
-                        android:adjustViewBounds="false"
+                        android:adjustViewBounds="true"
                         android:contentDescription="Show First Platform"
                         app:srcCompat="@mipmap/tralier2ccu_eng" />
 
                     <ImageButton
                         android:id="@+id/second_platform"
-                        android:layout_width="77dp"
+                        android:layout_width="50dp"
                         android:layout_height="84dp"
+                        android:adjustViewBounds="true"
                         android:contentDescription="Show Second Platform"
-                        android:maxHeight="@android:dimen/notification_large_icon_height"
                         app:srcCompat="@android:drawable/sym_contact_card" />
 
                     <ImageButton
                         android:id="@+id/third_platform"
-                        android:layout_width="77dp"
+                        android:layout_width="50dp"
                         android:layout_height="84dp"
+                        android:adjustViewBounds="true"
                         android:contentDescription="Show Third Platform"
                         app:srcCompat="@android:drawable/sym_contact_card" />
 
                     <ImageButton
                         android:id="@+id/fourth_platform"
-                        android:layout_width="77dp"
+                        android:layout_width="50dp"
                         android:layout_height="84dp"
+                        android:adjustViewBounds="true"
                         android:contentDescription="Show Fourth Platform"
                         app:srcCompat="@android:drawable/sym_contact_card" />
 
 
                     <ImageButton
                         android:id="@+id/fifth_platform"
-                        android:layout_width="77dp"
+                        android:layout_width="50dp"
                         android:layout_height="84dp"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="Show Fifth Platform"
+                        app:srcCompat="@android:drawable/sym_contact_card" />
+
+                    <ImageButton
+                        android:id="@+id/sixth_platform"
+                        android:layout_width="50dp"
+                        android:layout_height="84dp"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="Show Fifth Platform"
+                        app:srcCompat="@android:drawable/sym_contact_card" />
+
+                    <ImageButton
+                        android:id="@+id/seventh_platform"
+                        android:layout_width="50dp"
+                        android:layout_height="84dp"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="Show Fifth Platform"
+                        app:srcCompat="@android:drawable/sym_contact_card" />
+
+                    <ImageButton
+                        android:id="@+id/eight_platform"
+                        android:layout_width="50dp"
+                        android:layout_height="84dp"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="Show Fifth Platform"
+                        app:srcCompat="@android:drawable/sym_contact_card" />
+
+                    <ImageButton
+                        android:id="@+id/nineth_platform"
+                        android:layout_width="50dp"
+                        android:layout_height="84dp"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="Show Fifth Platform"
+                        app:srcCompat="@android:drawable/sym_contact_card" />
+
+                    <ImageButton
+                        android:id="@+id/tenth_platform"
+                        android:layout_width="50dp"
+                        android:layout_height="84dp"
+                        android:adjustViewBounds="true"
                         android:contentDescription="Show Fifth Platform"
                         app:srcCompat="@android:drawable/sym_contact_card" />
 
