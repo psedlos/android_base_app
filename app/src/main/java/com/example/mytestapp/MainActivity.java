@@ -20,12 +20,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     FloatingActionButton fab;
-    ImageButton btn0st;
-    ImageButton btn1st;
-    ImageButton btn2nd;
-    ImageButton btn3rd;
-    ImageButton btn4th;
-    ImageButton btn5th;
+    ImageButton[] trbtn;
     ImageButton[] btnwheels;
     //public TableLayout wheels_table;
     //public Trailer[] trailers;
@@ -34,6 +29,115 @@ public class MainActivity extends AppCompatActivity {
     static String TAG = "MainActivity";
     String tyre_description;
     final public Trailer[] trailers = new Trailer[6];
+
+    public void  update_trailers(ImageButton[] trbtn, Trailer[] trailers){
+
+
+        for(int i=1; i< trailers.length; i++){
+            if(trailers[i].numberOfAxles==2){
+                if(trailers[i].error == Trailer.errors.CCU1){
+                    trbtn[i].setImageResource(R.mipmap.tralier2ccu_eng);
+                } else if (trailers[i].error == Trailer.errors.CCU2){
+                    trbtn[i].setImageResource(R.mipmap.tralier2ccu_eng);
+                } else if (trailers[i].error == Trailer.errors.CCUs){
+                    trbtn[i].setImageResource(R.mipmap.tralier2unconnected_eng);
+                } else if (trailers[i].error == Trailer.errors.MPCB){
+                    trbtn[i].setImageResource(R.mipmap.tralier2mpcb_eng);
+                } else if (trailers[i].error == Trailer.errors.NON){
+                    if(trailers[i].status== Trailer.statuses.BLACK){
+                        trbtn[i].setImageResource(R.mipmap.tralier2unconnected_eng);
+                    } else if (trailers[i].status== Trailer.statuses.RED){
+                        trbtn[i].setImageResource(R.mipmap.tralier2red_eng);
+                    } else if (trailers[i].status== Trailer.statuses.ORANGE){
+                        trbtn[i].setImageResource(R.mipmap.tralier2orange_eng);
+                    } else if (trailers[i].status== Trailer.statuses.GREEN) {
+                        trbtn[i].setImageResource(R.mipmap.tralier2green_eng);
+                    }
+                }
+            } else if(trailers[i].numberOfAxles==3) {
+                if(trailers[i].error == Trailer.errors.CCU1){
+                    trbtn[i].setImageResource(R.mipmap.tralier3ccu_eng);
+                } else if (trailers[i].error == Trailer.errors.CCU2){
+                    trbtn[i].setImageResource(R.mipmap.tralier3ccu_eng);
+                } else if (trailers[i].error == Trailer.errors.CCUs){
+                    trbtn[i].setImageResource(R.mipmap.tralier3unconnected_eng);
+                } else if (trailers[i].error == Trailer.errors.MPCB){
+                    trbtn[i].setImageResource(R.mipmap.tralier3mpcb_eng);
+                } else if (trailers[i].error == Trailer.errors.NON){
+                    if(trailers[i].status== Trailer.statuses.BLACK){
+                        trbtn[i].setImageResource(R.mipmap.tralier3unconnected_eng);
+                    } else if (trailers[i].status== Trailer.statuses.RED){
+                        trbtn[i].setImageResource(R.mipmap.tralier3red_eng);
+                    } else if (trailers[i].status== Trailer.statuses.ORANGE){
+                        trbtn[i].setImageResource(R.mipmap.tralier3orange_eng);
+                    } else if (trailers[i].status== Trailer.statuses.GREEN) {
+                        trbtn[i].setImageResource(R.mipmap.tralier3green_eng);
+                    }
+                }
+            } else if(trailers[i].numberOfAxles==4) {
+                if(trailers[i].error == Trailer.errors.CCU1){
+                    trbtn[i].setImageResource(R.mipmap.tralier4ccu_eng);
+                } else if (trailers[i].error == Trailer.errors.CCU2){
+                    trbtn[i].setImageResource(R.mipmap.tralier4ccu_eng);
+                } else if (trailers[i].error == Trailer.errors.CCUs){
+                    trbtn[i].setImageResource(R.mipmap.tralier4unconnected_eng);
+                } else if (trailers[i].error == Trailer.errors.MPCB){
+                    trbtn[i].setImageResource(R.mipmap.tralier4mpcb_eng);
+                } else if (trailers[i].error == Trailer.errors.NON){
+                    if(trailers[i].status== Trailer.statuses.BLACK){
+                        trbtn[i].setImageResource(R.mipmap.tralier4unconnected_eng);
+                    } else if (trailers[i].status== Trailer.statuses.RED){
+                        trbtn[i].setImageResource(R.mipmap.tralier4red_eng);
+                    } else if (trailers[i].status== Trailer.statuses.ORANGE){
+                        trbtn[i].setImageResource(R.mipmap.tralier4orange_eng);
+                    } else if (trailers[i].status== Trailer.statuses.GREEN) {
+                        trbtn[i].setImageResource(R.mipmap.tralier4green_eng);
+                    }
+                }
+            } else if(trailers[i].numberOfAxles==5) {
+                if(trailers[i].error == Trailer.errors.CCU1){
+                    trbtn[i].setImageResource(R.mipmap.tralier5ccu_eng);
+                } else if (trailers[i].error == Trailer.errors.CCU2){
+                    trbtn[i].setImageResource(R.mipmap.tralier5ccu_eng);
+                } else if (trailers[i].error == Trailer.errors.CCUs){
+                    trbtn[i].setImageResource(R.mipmap.tralier5unconnected_eng);
+                } else if (trailers[i].error == Trailer.errors.MPCB){
+                    trbtn[i].setImageResource(R.mipmap.tralier5mpcb_eng);
+                } else if (trailers[i].error == Trailer.errors.NON){
+                    if(trailers[i].status== Trailer.statuses.BLACK){
+                        trbtn[i].setImageResource(R.mipmap.tralier5unconnected_eng);
+                    } else if (trailers[i].status== Trailer.statuses.RED){
+                        trbtn[i].setImageResource(R.mipmap.tralier5red_eng);
+                    } else if (trailers[i].status== Trailer.statuses.ORANGE){
+                        trbtn[i].setImageResource(R.mipmap.tralier5orange_eng);
+                    } else if (trailers[i].status== Trailer.statuses.GREEN) {
+                        trbtn[i].setImageResource(R.mipmap.tralier5green_eng);
+                    }
+                }
+            } else if(trailers[i].numberOfAxles==6) {
+                if(trailers[i].error == Trailer.errors.CCU1){
+                    trbtn[i].setImageResource(R.mipmap.tralier6ccu_eng);
+                } else if (trailers[i].error == Trailer.errors.CCU2){
+                    trbtn[i].setImageResource(R.mipmap.tralier6ccu_eng);
+                } else if (trailers[i].error == Trailer.errors.CCUs){
+                    trbtn[i].setImageResource(R.mipmap.tralier6unconnected_eng);
+                } else if (trailers[i].error == Trailer.errors.MPCB){
+                    trbtn[i].setImageResource(R.mipmap.tralier6mpcb_eng);
+                } else if (trailers[i].error == Trailer.errors.NON){
+                    if(trailers[i].status== Trailer.statuses.BLACK){
+                        trbtn[i].setImageResource(R.mipmap.tralier6unconnected_eng);
+                    } else if (trailers[i].status== Trailer.statuses.RED){
+                        trbtn[i].setImageResource(R.mipmap.tralier6red_eng);
+                    } else if (trailers[i].status== Trailer.statuses.ORANGE){
+                        trbtn[i].setImageResource(R.mipmap.tralier6orange_eng);
+                    } else if (trailers[i].status== Trailer.statuses.GREEN) {
+                        trbtn[i].setImageResource(R.mipmap.tralier6green_eng);
+                    }
+                }
+            }
+
+        }
+    }
 
 
     public void show_trailer(int trailer_number, TableLayout wheels_table, Trailer[] trailers, ImageButton[] btnwheels, TextView tyre_text) {
@@ -83,6 +187,7 @@ public class MainActivity extends AppCompatActivity {
         ImageButton btn3rd = (findViewById(R.id.third_platform));
         ImageButton btn4th = (findViewById(R.id.fourth_platform));
         ImageButton btn5th = (findViewById(R.id.fifth_platform));
+        final ImageButton[] btntrailers = {(findViewById(R.id.truck)),findViewById(R.id.first_platform),findViewById(R.id.second_platform),findViewById(R.id.third_platform),findViewById(R.id.fourth_platform),(findViewById(R.id.fifth_platform))};
         final ImageButton[] btnwheels = {(findViewById(R.id.tyre00)),(findViewById(R.id.tyre01)),(findViewById(R.id.tyre02)),(findViewById(R.id.tyre03)),(findViewById(R.id.tyre04)),(findViewById(R.id.tyre05)),(findViewById(R.id.tyre06)),(findViewById(R.id.tyre07)),(findViewById(R.id.tyre08)),(findViewById(R.id.tyre09)),(findViewById(R.id.tyre10)),(findViewById(R.id.tyre11)),(findViewById(R.id.tyre12)),(findViewById(R.id.tyre13)),(findViewById(R.id.tyre14)),(findViewById(R.id.tyre15)),(findViewById(R.id.tyre16)),(findViewById(R.id.tyre17)),(findViewById(R.id.tyre18)),(findViewById(R.id.tyre19)),(findViewById(R.id.tyre20)),(findViewById(R.id.tyre21)),(findViewById(R.id.tyre22)),(findViewById(R.id.tyre23)),(findViewById(R.id.tyre24)),(findViewById(R.id.tyre25)),(findViewById(R.id.tyre26)),(findViewById(R.id.tyre27)),(findViewById(R.id.tyre28)),(findViewById(R.id.tyre29)),(findViewById(R.id.tyre30)),(findViewById(R.id.tyre31)),(findViewById(R.id.tyre32)),(findViewById(R.id.tyre33)),(findViewById(R.id.tyre34)),(findViewById(R.id.tyre35)),(findViewById(R.id.tyre36)),(findViewById(R.id.tyre37)),(findViewById(R.id.tyre38)),(findViewById(R.id.tyre39)),(findViewById(R.id.tyre40)),(findViewById(R.id.tyre41)),(findViewById(R.id.tyre42)),(findViewById(R.id.tyre43)),(findViewById(R.id.tyre44)),(findViewById(R.id.tyre45)),(findViewById(R.id.tyre46)),(findViewById(R.id.tyre47)),(findViewById(R.id.tyre48)),(findViewById(R.id.tyre49)),(findViewById(R.id.tyre50)),(findViewById(R.id.tyre51)),(findViewById(R.id.tyre52)),(findViewById(R.id.tyre53)),(findViewById(R.id.tyre54)),(findViewById(R.id.tyre55)),(findViewById(R.id.tyre56)),(findViewById(R.id.tyre57)),(findViewById(R.id.tyre58)),(findViewById(R.id.tyre59)),(findViewById(R.id.tyre60)),(findViewById(R.id.tyre61)),(findViewById(R.id.tyre62)),(findViewById(R.id.tyre63))};
         final TableLayout wheels_table = (findViewById(R.id.wheels_table));
         //final Layout tyre_info_view = findViewById(R.id.tyreinfoview);
@@ -104,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
         trailers[1].wheels[19].updateWheel(40,10, Trailer.errors.NON, Trailer.statuses.BLACK);
         trailers[1].wheels[30].updateWheel(40,10, Trailer.errors.NON, Trailer.statuses.RED);
         trailers[1].wheels[1].updateWheel(40,10, Trailer.errors.NON, Trailer.statuses.GREEN);
-
+        update_trailers(btntrailers, trailers);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -180,37 +285,37 @@ public class MainActivity extends AppCompatActivity {
         btnwheels[63].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(which_trailer_show, 63, trailers, tyre_text, btnwheels);}});
 
 
-        btn0st.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){
+        btntrailers[0].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){
                 Log.i(TAG, "Button 0");
                 which_trailer_show = 0;
                 show_trailer(which_trailer_show , wheels_table, trailers, btnwheels, tyre_text);
             }});
 
-        btn1st.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){
+        btntrailers[1].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){
                 Log.i(TAG, "Button 1");
                 which_trailer_show = 1;
                 show_trailer(which_trailer_show , wheels_table, trailers, btnwheels, tyre_text);
             }});
 
-        btn2nd.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){
+        btntrailers[2].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){
                 Log.i(TAG, "Button 2");
                 which_trailer_show = 2;
                 show_trailer(which_trailer_show , wheels_table, trailers, btnwheels, tyre_text);
             }});
 
-        btn3rd.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){
+        btntrailers[3].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){
                 Log.i(TAG, "Button 3");
                 which_trailer_show = 3;
                 show_trailer(which_trailer_show , wheels_table, trailers, btnwheels, tyre_text);
             }});
 
-        btn4th.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){
+        btntrailers[4].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){
                 Log.i(TAG, "Button 4");
                 which_trailer_show = 4;
                 show_trailer(which_trailer_show , wheels_table, trailers, btnwheels, tyre_text);
             }});
 
-        btn5th.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){
+        btntrailers[5].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){
                 Log.i(TAG, "Button 5");
                 which_trailer_show = 5;
                 show_trailer(which_trailer_show , wheels_table, trailers, btnwheels, tyre_text);

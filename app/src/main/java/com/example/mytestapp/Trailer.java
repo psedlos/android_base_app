@@ -56,4 +56,12 @@ public class Trailer {
         error = errors.NON;
         wheels = new Wheel[64];
     }
+    Trailer(int axels_ ) {
+        numberOfAxles=axels_;
+        numberOfWheels=8*axels_;
+        turnedAround=true;
+        status = statuses.GREEN;
+        error = errors.NON;
+        wheels = new Wheel[64];
+    }
 }
