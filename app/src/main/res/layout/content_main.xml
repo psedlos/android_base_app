@@ -12,20 +12,19 @@
         android:id="@+id/scrollViewAllScreen"
         android:layout_width="400dp"
         android:layout_height="800dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginRight="0dp"
         android:layout_weight="1"
         android:scrollbars="none"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <RelativeLayout
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
             android:id="@+id/wholemainscreen"
-            class="android.support.constraint.Group"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
@@ -52,127 +51,137 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@android:drawable/sym_contact_card" />
 
-            <TableLayout
-                android:id="@+id/trailers_table"
+            <HorizontalScrollView
+                android:id="@+id/scrollView3"
                 android:layout_width="wrap_content"
-                android:layout_height="84dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/truck"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:orientation="horizontal"
+                android:scrollbars="none"
                 app:layout_constraintEnd_toEndOf="@+id/truck"
                 app:layout_constraintStart_toStartOf="@+id/truck"
-                app:layout_constraintTop_toTopOf="@+id/truck">
+                app:layout_constraintTop_toBottomOf="@+id/truck">
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:scrollbars="horizontal">
-
-                    <ImageButton
-                        android:id="@+id/first_platform"
-                        android:layout_width="50dp"
+                <LinearLayout
+                    android:id="@+id/linearLayout2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TableLayout
+                        android:id="@+id/trailers_table"
+                        android:layout_width="800dp"
                         android:layout_height="84dp"
-                        android:adjustViewBounds="true"
-                        android:contentDescription="Show First Platform"
-                        app:srcCompat="@mipmap/tralier2ccu_eng" />
+                        android:orientation="horizontal"
+                        android:scrollbars="horizontal"
+                        tools:layout_editor_absoluteY="0dp">
 
-                    <ImageButton
-                        android:id="@+id/second_platform"
-                        android:layout_width="50dp"
-                        android:layout_height="84dp"
-                        android:adjustViewBounds="true"
-                        android:contentDescription="Show Second Platform"
-                        app:srcCompat="@android:drawable/sym_contact_card" />
-
-                    <ImageButton
-                        android:id="@+id/third_platform"
-                        android:layout_width="50dp"
-                        android:layout_height="84dp"
-                        android:adjustViewBounds="true"
-                        android:contentDescription="Show Third Platform"
-                        app:srcCompat="@android:drawable/sym_contact_card" />
-
-                    <ImageButton
-                        android:id="@+id/fourth_platform"
-                        android:layout_width="50dp"
-                        android:layout_height="84dp"
-                        android:adjustViewBounds="true"
-                        android:contentDescription="Show Fourth Platform"
-                        app:srcCompat="@android:drawable/sym_contact_card" />
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center">
 
 
-                    <ImageButton
-                        android:id="@+id/fifth_platform"
-                        android:layout_width="50dp"
-                        android:layout_height="84dp"
-                        android:adjustViewBounds="true"
-                        android:contentDescription="Show Fifth Platform"
-                        app:srcCompat="@android:drawable/sym_contact_card" />
 
-                    <ImageButton
-                        android:id="@+id/sixth_platform"
-                        android:layout_width="50dp"
-                        android:layout_height="84dp"
-                        android:adjustViewBounds="true"
-                        android:contentDescription="Show Fifth Platform"
-                        app:srcCompat="@android:drawable/sym_contact_card" />
+                            <ImageButton
+                                android:id="@+id/first_platform"
+                                android:layout_width="70dp"
+                                android:layout_height="84dp"
+                                android:adjustViewBounds="true"
+                                android:contentDescription="Show First Platform"
+                                app:srcCompat="@mipmap/tralier2ccu_eng" />
 
-                    <ImageButton
-                        android:id="@+id/seventh_platform"
-                        android:layout_width="50dp"
-                        android:layout_height="84dp"
-                        android:adjustViewBounds="true"
-                        android:contentDescription="Show Fifth Platform"
-                        app:srcCompat="@android:drawable/sym_contact_card" />
+                            <ImageButton
+                                android:id="@+id/second_platform"
+                                android:layout_width="70dp"
+                                android:layout_height="84dp"
+                                android:adjustViewBounds="true"
+                                android:contentDescription="Show Second Platform"
+                                app:srcCompat="@android:drawable/sym_contact_card" />
 
-                    <ImageButton
-                        android:id="@+id/eight_platform"
-                        android:layout_width="50dp"
-                        android:layout_height="84dp"
-                        android:adjustViewBounds="true"
-                        android:contentDescription="Show Fifth Platform"
-                        app:srcCompat="@android:drawable/sym_contact_card" />
+                            <ImageButton
+                                android:id="@+id/third_platform"
+                                android:layout_width="70dp"
+                                android:layout_height="84dp"
+                                android:adjustViewBounds="true"
+                                android:contentDescription="Show Third Platform"
+                                app:srcCompat="@android:drawable/sym_contact_card" />
 
-                    <ImageButton
-                        android:id="@+id/nineth_platform"
-                        android:layout_width="50dp"
-                        android:layout_height="84dp"
-                        android:adjustViewBounds="true"
-                        android:contentDescription="Show Fifth Platform"
-                        app:srcCompat="@android:drawable/sym_contact_card" />
-
-                    <ImageButton
-                        android:id="@+id/tenth_platform"
-                        android:layout_width="50dp"
-                        android:layout_height="84dp"
-                        android:adjustViewBounds="true"
-                        android:contentDescription="Show Fifth Platform"
-                        app:srcCompat="@android:drawable/sym_contact_card" />
+                            <ImageButton
+                                android:id="@+id/fourth_platform"
+                                android:layout_width="70dp"
+                                android:layout_height="84dp"
+                                android:adjustViewBounds="true"
+                                android:contentDescription="Show Fourth Platform"
+                                app:srcCompat="@android:drawable/sym_contact_card" />
 
 
-                </TableRow>
+                            <ImageButton
+                                android:id="@+id/fifth_platform"
+                                android:layout_width="70dp"
+                                android:layout_height="84dp"
+                                android:adjustViewBounds="true"
+                                android:contentDescription="Show Fifth Platform"
+                                app:srcCompat="@android:drawable/sym_contact_card" />
 
-            </TableLayout>
+                            <ImageButton
+                                android:id="@+id/sixth_platform"
+                                android:layout_width="70dp"
+                                android:layout_height="84dp"
+                                android:adjustViewBounds="true"
+                                android:contentDescription="Show Fifth Platform"
+                                app:srcCompat="@android:drawable/sym_contact_card" />
+
+                            <ImageButton
+                                android:id="@+id/seventh_platform"
+                                android:layout_width="70dp"
+                                android:layout_height="84dp"
+                                android:adjustViewBounds="true"
+                                android:contentDescription="Show Fifth Platform"
+                                app:srcCompat="@android:drawable/sym_contact_card" />
+
+                            <ImageButton
+                                android:id="@+id/eight_platform"
+                                android:layout_width="70dp"
+                                android:layout_height="84dp"
+                                android:adjustViewBounds="true"
+                                android:contentDescription="Show Fifth Platform"
+                                app:srcCompat="@android:drawable/sym_contact_card" />
+
+                            <ImageButton
+                                android:id="@+id/nineth_platform"
+                                android:layout_width="70dp"
+                                android:layout_height="84dp"
+                                android:adjustViewBounds="true"
+                                android:contentDescription="Show Fifth Platform"
+                                app:srcCompat="@android:drawable/sym_contact_card" />
+
+                            <ImageButton
+                                android:id="@+id/tenth_platform"
+                                android:layout_width="70dp"
+                                android:layout_height="84dp"
+                                android:adjustViewBounds="true"
+                                android:contentDescription="Show Fifth Platform"
+                                app:srcCompat="@android:drawable/sym_contact_card" />
+
+                        </TableRow>
+                    </TableLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
+
 
             <ScrollView
                 android:id="@+id/scrollView2"
                 android:layout_width="400dp"
                 android:layout_height="267dp"
-                android:layout_below="@+id/trailers_table"
+                android:layout_below="@+id/scrollView3"
                 android:layout_marginStart="0dp"
                 android:layout_marginLeft="0dp"
                 android:layout_marginTop="0dp"
                 android:layout_marginEnd="0dp"
                 android:layout_marginRight="0dp"
                 android:scrollbars="none"
-                app:layout_constraintEnd_toEndOf="@+id/trailers_table"
-                app:layout_constraintStart_toStartOf="@+id/trailers_table"
-                app:layout_constraintTop_toBottomOf="@+id/trailers_table">
+                app:layout_constraintEnd_toEndOf="@+id/scrollView3"
+                app:layout_constraintStart_toStartOf="@+id/scrollView3"
+                app:layout_constraintTop_toBottomOf="@+id/scrollView3">
 
                 <LinearLayout
                     android:id="@+id/linearLayout"
@@ -650,5 +659,6 @@
 
 
         </RelativeLayout>
+        </LinearLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>

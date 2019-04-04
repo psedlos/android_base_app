@@ -14,27 +14,10 @@ public class Trailer {
         public double getPress(){return pressure;}
         public statuses getStat(){return status;}
         public errors getError(){return error;}
-//        public void setTemp(double temp){this.temperature=temp;}
-//        public void setPress(double press){this.pressure=press;}
-//        public void setStat(statuses stat){this.status=stat;}
-//        public void setError(statuses stat){this.status=stat;}
-        //public void updateWheel(double temp, double press){this.temperature = temp; this.pressure = press;}
         void updateWheel(double temp, double press, errors err){this.temperature = temp; this.pressure = press; this.error = err;}
         void updateWheel(double temp, double press, errors err, statuses status){this.temperature = temp; this.pressure = press; this.error = err; this.status = status;}
 
-        /*public Wheel(double temperature, double pressure, statuses status, errors error) {
-            super();
-            this.temperature = temperature;
-            this.pressure=pressure;
-            this.status = status;
-            this.error = error;
-        }*/
-        Wheel() {
-//            this.temperature = 0;
-//            this.pressure=0;
-//            this.status = statuses.BLACK;
-//            this.error = errors.MPCB;
-        }
+        Wheel() {}
     }
 
     public enum typeoftraliers {TRUCK, TRAILER, PLATFORM}
@@ -63,5 +46,32 @@ public class Trailer {
         status = statuses.GREEN;
         error = errors.NON;
         wheels = new Wheel[64];
+    }
+    void update_trailers(int ccu_status, int axles_count, int wheels_count, int wheels_count_not_eaqual){
+        this.numberOfAxles = axles_count;
+        this.numberOfWheels = wheels_count;
+        if (wheels_count_not_eaqual != 0) {this.error = errors.MPCB;}
+        else if(ccu_status == 1) {this.error = errors.CCU1;}
+        else if(ccu_status == 2) {this.error = errors.CCU2;}
+        else if(ccu_status == 3) {this.error = errors.CCUs;}
+        else if(ccu_status == 0) {this.error = errors.NON;}
+    }
+    void check_trailer_status(){
+        this.status = statuses.GREEN;
+        for( int i =0 ; i< this.wheels.length ; i++){
+            switch (this.wheels[i].status) {
+                case BLACK:
+                    this.status = statuses.BLACK;
+                case RED:
+                    if (this.status != statuses.BLACK) {
+                        this.status = statuses.RED;
+                    }
+                case ORANGE:
+                    if (this.status != statuses.BLACK && this.status != statuses.RED) {
+                        this.status = statuses.ORANGE;
+                    }
+                case GREEN:
+            }
+        }
     }
 }
