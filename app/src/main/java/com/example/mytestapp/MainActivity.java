@@ -22,17 +22,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     FloatingActionButton fab;
-    //ImageButton[] trbtn;
-    //ImageButton[] btnwheels;
-    //public TableLayout wheels_table;
-    //public Trailer[] trailers;
-    //int which_trailer_show;
-    //View tyre_info_view;
     static String TAG = "MainActivity";
-    //String tyre_description;
-    //final public Trailer[] trailers = new Trailer[11];
-
-
 
     public void  update_trailers(MainContainer mc){
         ViewGroup.LayoutParams layoutparams;
@@ -148,7 +138,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     public void show_trailer(MainContainer mc) {
         if (mc.which_trailer_show<0 || mc.which_trailer_show >11) {
             mc.wheels_table.setVisibility(View.INVISIBLE);
@@ -218,6 +207,10 @@ public class MainActivity extends AppCompatActivity {
         mc.trailers[9].wheels[1].updateWheel(40,10, Trailer.errors.NON, Trailer.statuses.GREEN);
     }
 
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -236,23 +229,19 @@ public class MainActivity extends AppCompatActivity {
             mc.trailers[i]=new Trailer();
             for(int j = 0 ; j<mc.trailers[i].wheels.length; j++) {
                 mc.trailers[i].wheels[j] = mc.trailers[i].new Wheel();
-            }}
-
-
+            }
+        }
         Log.i(TAG, "It is alive!");
         mc.tyre_text.setVisibility(View.INVISIBLE);
         mc.which_trailer_show= -1;
-        show_trailer(mc);
-
         populate_data(mc);
         update_trailers(mc);
+        show_trailer(mc);
+
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
+            public void onClick(View view) {Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();}
         });
 
         mc.btnwheels[0].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(0, mc);}});
@@ -320,8 +309,7 @@ public class MainActivity extends AppCompatActivity {
         mc.btnwheels[62].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(62, mc);}});
         mc.btnwheels[63].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(63, mc);}});
 
-
-        mc.btntrailers[0].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 0"); mc.which_trailer_show = 0; show_trailer(mc);}});
+        mc.btntrailers[0].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 0"); mc.which_trailer_show = 0; show_trailer(mc); new ClientSend().run();}});
         mc.btntrailers[1].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 1"); mc.which_trailer_show = 1; show_trailer(mc);}});
         mc.btntrailers[2].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 2"); mc.which_trailer_show = 2; show_trailer(mc);}});
         mc.btntrailers[3].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 3"); mc.which_trailer_show = 3; show_trailer(mc);}});
@@ -332,7 +320,7 @@ public class MainActivity extends AppCompatActivity {
         mc.btntrailers[8].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 8"); mc.which_trailer_show = 8; show_trailer(mc);}});
         mc.btntrailers[9].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 9"); mc.which_trailer_show = 9; show_trailer(mc);}});
         mc.btntrailers[10].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 10"); mc.which_trailer_show = 10; show_trailer(mc);}});
-
+        new Thread( new ClientListen()).start();
     }
 
     @Override
