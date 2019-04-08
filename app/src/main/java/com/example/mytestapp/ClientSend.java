@@ -19,11 +19,11 @@ public class ClientSend implements Runnable{
                 Log.d("UDP Bound:", "address reused");
             }
 
-            InetSocketAddress port = new InetSocketAddress(2147);
+            InetSocketAddress port = new InetSocketAddress(64444);
             udpSocket.bind( port);
             InetAddress serverAddr = InetAddress.getByName("192.168.0.111");
             byte[] buf = ("The String to Send").getBytes();
-            DatagramPacket packet = new DatagramPacket(buf,0, buf.length, serverAddr, 2147);
+            DatagramPacket packet = new DatagramPacket(buf,0, buf.length, serverAddr, 64443);
             udpSocket.send(packet);
             udpSocket.close();
         }

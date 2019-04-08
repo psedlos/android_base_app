@@ -237,6 +237,7 @@ public class MainActivity extends AppCompatActivity {
         populate_data(mc);
         update_trailers(mc);
         show_trailer(mc);
+        //new ClientSend().run();
 
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -309,7 +310,7 @@ public class MainActivity extends AppCompatActivity {
         mc.btnwheels[62].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(62, mc);}});
         mc.btnwheels[63].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(63, mc);}});
 
-        mc.btntrailers[0].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 0"); mc.which_trailer_show = 0; show_trailer(mc); new ClientSend().run();}});
+        mc.btntrailers[0].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 0"); mc.which_trailer_show = 0; show_trailer(mc);}});
         mc.btntrailers[1].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 1"); mc.which_trailer_show = 1; show_trailer(mc);}});
         mc.btntrailers[2].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 2"); mc.which_trailer_show = 2; show_trailer(mc);}});
         mc.btntrailers[3].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 3"); mc.which_trailer_show = 3; show_trailer(mc);}});

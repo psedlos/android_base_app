@@ -22,14 +22,15 @@ public class ClientListen implements Runnable {
                     udpSocket.setReuseAddress(true);
                     Log.d("UDP Bound:", "address reused");
                 }
-
-                InetSocketAddress port = new InetSocketAddress(2148);
+                udpSocket.setReuseAddress(true);
+                InetSocketAddress port = new InetSocketAddress(64442);
                 udpSocket.bind( port);
                 byte[] message = new byte[8000];
                 DatagramPacket packet = new DatagramPacket(message, message.length);
                 Log.i("UDP client:", "about to wait to receive");
                 udpSocket.receive(packet);
                 String text = new String(message, 0, packet.getLength());
+
                 Log.d("Received Data", text);
             } catch (IOException e) {
                 Log.e("UDP Client has IOE", "error: ", e);
