@@ -20,7 +20,7 @@ public class Trailer {
         Wheel() {}
     }
 
-    public enum typeoftraliers {TRUCK, TRAILER, PLATFORM}
+    public enum typeoftraliers {TRUCK, TRAILER, PLATFORM, NON}
     typeoftraliers typeoftralier;
     int numberOfAxles;
     int numberOfWheels;
@@ -31,7 +31,7 @@ public class Trailer {
     errors error;
     Wheel[] wheels;
     Trailer() {
-        typeoftralier = typeoftraliers.TRAILER;
+        typeoftralier = typeoftraliers.NON;
         numberOfAxles=6;
         numberOfWheels=64;
         turnedAround=true;

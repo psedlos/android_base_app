@@ -209,8 +209,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -235,8 +233,8 @@ public class MainActivity extends AppCompatActivity {
         mc.tyre_text.setVisibility(View.INVISIBLE);
         mc.which_trailer_show= -1;
         populate_data(mc);
-        update_trailers(mc);
-        show_trailer(mc);
+        mc.update_trailers();
+        mc.show_trailer();
         //new ClientSend().run();
 
 
@@ -321,7 +319,10 @@ public class MainActivity extends AppCompatActivity {
         mc.btntrailers[8].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 8"); mc.which_trailer_show = 8; show_trailer(mc);}});
         mc.btntrailers[9].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 9"); mc.which_trailer_show = 9; show_trailer(mc);}});
         mc.btntrailers[10].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 10"); mc.which_trailer_show = 10; show_trailer(mc);}});
-        new Thread( new ClientListen()).start();
+
+        Runnable clientListen = new ClientListen(mc);
+        Thread UDPList = new Thread( clientListen );
+        UDPList.start();
     }
 
     @Override
