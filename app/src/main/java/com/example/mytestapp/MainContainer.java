@@ -179,7 +179,7 @@ public class MainContainer extends Application {
                     this.btnwheels[i].setImageResource(R.mipmap.red_tyre);}
                 else if(this.trailers[this.which_trailer_show].wheels[i].status == Trailer.statuses.BLACK){
                     this.btnwheels[i].setImageResource(R.mipmap.tyre_black);}
-
+                this.btnwheels[i].postInvalidate();
 
             }
         }
