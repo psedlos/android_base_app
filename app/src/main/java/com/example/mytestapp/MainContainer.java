@@ -20,6 +20,15 @@ public class MainContainer extends Application {
     TextView tyre_text;
     int trailer_number;
     TableLayout wheels_table;
+    Boolean screen_update=false;
+    /*Thread scrudp = new Thread() {
+        @Override
+        public void run() {
+            update_trailers();
+            show_trailer();
+        }
+    };*/
+
 
     public MainContainer() {
         Trailer[] trailers = new Trailer[11];
@@ -38,6 +47,7 @@ public class MainContainer extends Application {
         TextView tyre_text;
         int trailer_number;
         TableLayout wheels_table;
+        Boolean screen_update = false;
     }
     public void  update_trailers(){
         ViewGroup.LayoutParams layoutparams;

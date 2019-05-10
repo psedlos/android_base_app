@@ -1,8 +1,12 @@
 package com.example.mytestapp;
 
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.design.animation.ImageMatrixProperty;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,6 +22,8 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
+
+import java.io.IOException;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -206,8 +212,9 @@ public class MainActivity extends AppCompatActivity {
         mc.trailers[8].wheels[30].updateWheel(40,10, Trailer.errors.NON, Trailer.statuses.RED);
         mc.trailers[9].wheels[1].updateWheel(40,10, Trailer.errors.NON, Trailer.statuses.GREEN);
     }
-
-
+    interface Callback {
+        void callback();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -216,6 +223,9 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
+
+        Callback c;
+        Thread thread;
 
         final MainContainer mc = new MainContainer();
         mc.btntrailers = new ImageButton[] {findViewById(R.id.truck),findViewById(R.id.first_platform),findViewById(R.id.second_platform),findViewById(R.id.third_platform),findViewById(R.id.fourth_platform),findViewById(R.id.fifth_platform),findViewById(R.id.sixth_platform),findViewById(R.id.seventh_platform),findViewById(R.id.eight_platform),findViewById(R.id.nineth_platform),findViewById(R.id.tenth_platform)};
@@ -243,86 +253,90 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();}
         });
 
-        mc.btnwheels[0].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(0, mc);}});
-        mc.btnwheels[1].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(1, mc);}});
-        mc.btnwheels[2].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre( 2, mc);}});
-        mc.btnwheels[3].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre( 3, mc);}});
-        mc.btnwheels[4].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre( 4, mc);}});
-        mc.btnwheels[5].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre( 5, mc);}});
-        mc.btnwheels[6].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre( 6, mc);}});
-        mc.btnwheels[7].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre( 7, mc);}});
-        mc.btnwheels[8].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre( 8, mc);}});
-        mc.btnwheels[9].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre( 9, mc);}});
-        mc.btnwheels[10].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(10, mc);}});
-        mc.btnwheels[11].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(11, mc);}});
-        mc.btnwheels[12].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(12, mc);}});
-        mc.btnwheels[13].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(13, mc);}});
-        mc.btnwheels[14].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(14, mc);}});
-        mc.btnwheels[15].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(15, mc);}});
-        mc.btnwheels[16].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(16, mc);}});
-        mc.btnwheels[17].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(17, mc);}});
-        mc.btnwheels[18].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(18, mc);}});
-        mc.btnwheels[19].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(19, mc);}});
-        mc.btnwheels[20].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(20, mc);}});
-        mc.btnwheels[21].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(21, mc);}});
-        mc.btnwheels[22].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(22, mc);}});
-        mc.btnwheels[23].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(23, mc);}});
-        mc.btnwheels[24].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(24, mc);}});
-        mc.btnwheels[25].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(25, mc);}});
-        mc.btnwheels[26].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(26, mc);}});
-        mc.btnwheels[27].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(27, mc);}});
-        mc.btnwheels[28].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(28, mc);}});
-        mc.btnwheels[29].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(29, mc);}});
-        mc.btnwheels[30].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(30, mc);}});
-        mc.btnwheels[31].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(31, mc);}});
-        mc.btnwheels[32].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(32, mc);}});
-        mc.btnwheels[33].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(33, mc);}});
-        mc.btnwheels[34].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(34, mc);}});
-        mc.btnwheels[35].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(35, mc);}});
-        mc.btnwheels[36].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(36, mc);}});
-        mc.btnwheels[37].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(37, mc);}});
-        mc.btnwheels[38].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(38, mc);}});
-        mc.btnwheels[39].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(39, mc);}});
-        mc.btnwheels[40].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(40, mc);}});
-        mc.btnwheels[41].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(41, mc);}});
-        mc.btnwheels[42].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(42, mc);}});
-        mc.btnwheels[43].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(43, mc);}});
-        mc.btnwheels[44].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(44, mc);}});
-        mc.btnwheels[45].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(45, mc);}});
-        mc.btnwheels[46].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(46, mc);}});
-        mc.btnwheels[47].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(47, mc);}});
-        mc.btnwheels[48].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(48, mc);}});
-        mc.btnwheels[49].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(49, mc);}});
-        mc.btnwheels[50].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(50, mc);}});
-        mc.btnwheels[51].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(51, mc);}});
-        mc.btnwheels[52].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(52, mc);}});
-        mc.btnwheels[53].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(53, mc);}});
-        mc.btnwheels[54].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(54, mc);}});
-        mc.btnwheels[55].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(55, mc);}});
-        mc.btnwheels[56].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(56, mc);}});
-        mc.btnwheels[57].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(57, mc);}});
-        mc.btnwheels[58].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(58, mc);}});
-        mc.btnwheels[59].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(59, mc);}});
-        mc.btnwheels[60].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(60, mc);}});
-        mc.btnwheels[61].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(61, mc);}});
-        mc.btnwheels[62].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(62, mc);}});
-        mc.btnwheels[63].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(63, mc);}});
+        mc.btnwheels[0].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(0, mc);w.invalidate();}});
+        mc.btnwheels[1].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(1, mc);w.invalidate();}});
+        mc.btnwheels[2].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre( 2, mc);w.invalidate();}});
+        mc.btnwheels[3].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre( 3, mc);w.invalidate();}});
+        mc.btnwheels[4].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre( 4, mc);w.invalidate();}});
+        mc.btnwheels[5].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre( 5, mc);w.invalidate();}});
+        mc.btnwheels[6].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre( 6, mc);w.invalidate();}});
+        mc.btnwheels[7].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre( 7, mc);w.invalidate();}});
+        mc.btnwheels[8].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre( 8, mc);w.invalidate();}});
+        mc.btnwheels[9].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre( 9, mc);w.invalidate();}});
+        mc.btnwheels[10].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(10, mc);w.invalidate();}});
+        mc.btnwheels[11].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(11, mc);w.invalidate();}});
+        mc.btnwheels[12].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(12, mc);w.invalidate();}});
+        mc.btnwheels[13].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(13, mc);w.invalidate();}});
+        mc.btnwheels[14].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(14, mc);w.invalidate();}});
+        mc.btnwheels[15].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(15, mc);w.invalidate();}});
+        mc.btnwheels[16].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(16, mc);w.invalidate();}});
+        mc.btnwheels[17].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(17, mc);w.invalidate();}});
+        mc.btnwheels[18].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(18, mc);w.invalidate();}});
+        mc.btnwheels[19].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(19, mc);w.invalidate();}});
+        mc.btnwheels[20].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(20, mc);w.invalidate();}});
+        mc.btnwheels[21].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(21, mc);w.invalidate();}});
+        mc.btnwheels[22].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(22, mc);w.invalidate();}});
+        mc.btnwheels[23].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(23, mc);w.invalidate();}});
+        mc.btnwheels[24].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(24, mc);w.invalidate();}});
+        mc.btnwheels[25].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(25, mc);w.invalidate();}});
+        mc.btnwheels[26].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(26, mc);w.invalidate();}});
+        mc.btnwheels[27].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(27, mc);w.invalidate();}});
+        mc.btnwheels[28].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(28, mc);w.invalidate();}});
+        mc.btnwheels[29].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(29, mc);w.invalidate();}});
+        mc.btnwheels[30].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(30, mc);w.invalidate();}});
+        mc.btnwheels[31].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(31, mc);w.invalidate();}});
+        mc.btnwheels[32].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(32, mc);w.invalidate();}});
+        mc.btnwheels[33].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(33, mc);w.invalidate();}});
+        mc.btnwheels[34].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(34, mc);w.invalidate();}});
+        mc.btnwheels[35].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(35, mc);w.invalidate();}});
+        mc.btnwheels[36].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(36, mc);w.invalidate();}});
+        mc.btnwheels[37].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(37, mc);w.invalidate();}});
+        mc.btnwheels[38].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(38, mc);w.invalidate();}});
+        mc.btnwheels[39].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(39, mc);w.invalidate();}});
+        mc.btnwheels[40].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(40, mc);w.invalidate();}});
+        mc.btnwheels[41].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(41, mc);w.invalidate();}});
+        mc.btnwheels[42].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(42, mc);w.invalidate();}});
+        mc.btnwheels[43].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(43, mc);w.invalidate();}});
+        mc.btnwheels[44].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(44, mc);w.invalidate();}});
+        mc.btnwheels[45].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(45, mc);w.invalidate();}});
+        mc.btnwheels[46].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(46, mc);w.invalidate();}});
+        mc.btnwheels[47].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(47, mc);w.invalidate();}});
+        mc.btnwheels[48].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(48, mc);w.invalidate();}});
+        mc.btnwheels[49].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(49, mc);w.invalidate();}});
+        mc.btnwheels[50].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(50, mc);w.invalidate();}});
+        mc.btnwheels[51].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(51, mc);w.invalidate();}});
+        mc.btnwheels[52].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(52, mc);w.invalidate();}});
+        mc.btnwheels[53].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(53, mc);w.invalidate();}});
+        mc.btnwheels[54].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(54, mc);w.invalidate();}});
+        mc.btnwheels[55].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(55, mc);w.invalidate();}});
+        mc.btnwheels[56].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(56, mc);w.invalidate();}});
+        mc.btnwheels[57].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(57, mc);w.invalidate();}});
+        mc.btnwheels[58].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(58, mc);w.invalidate();}});
+        mc.btnwheels[59].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(59, mc);w.invalidate();}});
+        mc.btnwheels[60].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(60, mc);w.invalidate();}});
+        mc.btnwheels[61].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(61, mc);w.invalidate();}});
+        mc.btnwheels[62].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(62, mc);w.invalidate();}});
+        mc.btnwheels[63].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){show_tyre(63, mc);w.invalidate();}});
 
-        mc.btntrailers[0].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 0"); mc.which_trailer_show = 0; show_trailer(mc);}});
-        mc.btntrailers[1].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 1"); mc.which_trailer_show = 1; show_trailer(mc);}});
-        mc.btntrailers[2].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 2"); mc.which_trailer_show = 2; show_trailer(mc);}});
-        mc.btntrailers[3].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 3"); mc.which_trailer_show = 3; show_trailer(mc);}});
-        mc.btntrailers[4].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 4"); mc.which_trailer_show = 4; show_trailer(mc);}});
-        mc.btntrailers[5].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 5"); mc.which_trailer_show = 5; show_trailer(mc);}});
-        mc.btntrailers[6].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 6"); mc.which_trailer_show = 6; show_trailer(mc);}});
-        mc.btntrailers[7].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 7"); mc.which_trailer_show = 7; show_trailer(mc);}});
-        mc.btntrailers[8].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 8"); mc.which_trailer_show = 8; show_trailer(mc);}});
-        mc.btntrailers[9].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 9"); mc.which_trailer_show = 9; show_trailer(mc);}});
-        mc.btntrailers[10].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 10"); mc.which_trailer_show = 10; show_trailer(mc);}});
+        mc.btntrailers[0].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 0"); mc.which_trailer_show = 0; show_trailer(mc);w.invalidate();}});
+        mc.btntrailers[1].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 1"); mc.which_trailer_show = 1; show_trailer(mc);w.invalidate();}});
+        mc.btntrailers[2].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 2"); mc.which_trailer_show = 2; show_trailer(mc);w.invalidate();}});
+        mc.btntrailers[3].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 3"); mc.which_trailer_show = 3; show_trailer(mc);w.invalidate();}});
+        mc.btntrailers[4].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 4"); mc.which_trailer_show = 4; show_trailer(mc);w.invalidate();}});
+        mc.btntrailers[5].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 5"); mc.which_trailer_show = 5; show_trailer(mc);w.invalidate();}});
+        mc.btntrailers[6].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 6"); mc.which_trailer_show = 6; show_trailer(mc);w.invalidate();}});
+        mc.btntrailers[7].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 7"); mc.which_trailer_show = 7; show_trailer(mc);w.invalidate();}});
+        mc.btntrailers[8].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 8"); mc.which_trailer_show = 8; show_trailer(mc);w.invalidate();}});
+        mc.btntrailers[9].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 9"); mc.which_trailer_show = 9; show_trailer(mc);w.invalidate();}});
+        mc.btntrailers[10].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 10"); mc.which_trailer_show = 10; show_trailer(mc);w.invalidate();}});
+
 
         Runnable clientListen = new ClientListen(mc);
+
         Thread UDPList = new Thread( clientListen );
+
         UDPList.start();
+
     }
 
     @Override
