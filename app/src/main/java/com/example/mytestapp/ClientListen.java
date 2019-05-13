@@ -3,6 +3,7 @@ package com.example.mytestapp;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Looper;
+import android.provider.ContactsContract;
 import android.support.annotation.MainThread;
 import android.support.annotation.UiThread;
 import android.util.Log;
@@ -13,13 +14,16 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.SocketException;
+import java.util.concurrent.Callable;
 
 
 public class ClientListen implements Runnable {
     MainContainer mc;
+    Callable screenUpdate;
 //    MainActivity.Callback c;
-    public ClientListen(MainContainer mc){
+    public ClientListen(MainContainer mc, Callable screenUpdate){
         this.mc = mc;
+        this.screenUpdate=screenUpdate;
   //      this.c = c;
     }
 
@@ -31,6 +35,9 @@ public class ClientListen implements Runnable {
     @Override
     public void run() {
 
+//        mc.update_trailers();
+//        mc.show_trailer();
+//        Looper.prepare();
         boolean run = true;
         while (run) {
             try {
@@ -96,7 +103,11 @@ public class ClientListen implements Runnable {
                 }
 
                 mc.screen_update = true;
-                mc.show_trailer();
+                //
+                ((ScreenUpdate) screenUpdate).call();
+                //mc.show_trailer();
+
+
 
 
             } catch (IOException e) {

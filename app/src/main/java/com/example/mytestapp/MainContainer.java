@@ -52,6 +52,7 @@ public class MainContainer extends Application {
     public void  update_trailers(){
         ViewGroup.LayoutParams layoutparams;
         for(int i=1; i< this.trailers.length; i++){
+            this.btntrailers[i].invalidate();
             layoutparams = (ViewGroup.LayoutParams) this.btntrailers[i].getLayoutParams();
             if(this.trailers[i].numberOfAxles==2){
                 layoutparams.width = 60;
@@ -160,6 +161,7 @@ public class MainContainer extends Application {
                 }
             }
             this.btntrailers[i].setLayoutParams(layoutparams);
+            this.btntrailers[i].postInvalidate();
         }
     }
     public void show_trailer() {
@@ -170,7 +172,8 @@ public class MainContainer extends Application {
             this.wheels_table.setVisibility(View.VISIBLE);
             this.tyre_text.setVisibility(View.INVISIBLE);
             for(int i = 0 ; i<64 ; i++){
-                this.btnwheels[i].setBackgroundColor(getResources().getColor(R.color.buttonNormalBackground));
+                //this.btnwheels[i].setBackgroundColor(getResources().getColor(R.color.buttonNormalBackground));
+                this.btnwheels[i].invalidate();
                 if(this.trailers[this.which_trailer_show].wheels[i].status == Trailer.statuses.GREEN){
                     this.btnwheels[i].setImageResource(R.mipmap.green_tyre);}
                 else if(this.trailers[this.which_trailer_show].wheels[i].status == Trailer.statuses.ORANGE){
@@ -179,7 +182,6 @@ public class MainContainer extends Application {
                     this.btnwheels[i].setImageResource(R.mipmap.red_tyre);}
                 else if(this.trailers[this.which_trailer_show].wheels[i].status == Trailer.statuses.BLACK){
                     this.btnwheels[i].setImageResource(R.mipmap.tyre_black);}
-                this.btnwheels[i].postInvalidate();
 
             }
         }

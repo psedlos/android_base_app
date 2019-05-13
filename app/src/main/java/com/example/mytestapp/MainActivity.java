@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.ContactsContract;
 import android.support.design.animation.ImageMatrixProperty;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -24,6 +25,7 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 
 import java.io.IOException;
+import java.util.concurrent.Callable;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -224,10 +226,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
 
-        Callback c;
-        Thread thread;
-
         final MainContainer mc = new MainContainer();
+
         mc.btntrailers = new ImageButton[] {findViewById(R.id.truck),findViewById(R.id.first_platform),findViewById(R.id.second_platform),findViewById(R.id.third_platform),findViewById(R.id.fourth_platform),findViewById(R.id.fifth_platform),findViewById(R.id.sixth_platform),findViewById(R.id.seventh_platform),findViewById(R.id.eight_platform),findViewById(R.id.nineth_platform),findViewById(R.id.tenth_platform)};
         mc.btnwheels = new ImageButton[] {(findViewById(R.id.tyre00)),(findViewById(R.id.tyre01)),(findViewById(R.id.tyre02)),(findViewById(R.id.tyre03)),(findViewById(R.id.tyre04)),(findViewById(R.id.tyre05)),(findViewById(R.id.tyre06)),(findViewById(R.id.tyre07)),(findViewById(R.id.tyre08)),(findViewById(R.id.tyre09)),(findViewById(R.id.tyre10)),(findViewById(R.id.tyre11)),(findViewById(R.id.tyre12)),(findViewById(R.id.tyre13)),(findViewById(R.id.tyre14)),(findViewById(R.id.tyre15)),(findViewById(R.id.tyre16)),(findViewById(R.id.tyre17)),(findViewById(R.id.tyre18)),(findViewById(R.id.tyre19)),(findViewById(R.id.tyre20)),(findViewById(R.id.tyre21)),(findViewById(R.id.tyre22)),(findViewById(R.id.tyre23)),(findViewById(R.id.tyre24)),(findViewById(R.id.tyre25)),(findViewById(R.id.tyre26)),(findViewById(R.id.tyre27)),(findViewById(R.id.tyre28)),(findViewById(R.id.tyre29)),(findViewById(R.id.tyre30)),(findViewById(R.id.tyre31)),(findViewById(R.id.tyre32)),(findViewById(R.id.tyre33)),(findViewById(R.id.tyre34)),(findViewById(R.id.tyre35)),(findViewById(R.id.tyre36)),(findViewById(R.id.tyre37)),(findViewById(R.id.tyre38)),(findViewById(R.id.tyre39)),(findViewById(R.id.tyre40)),(findViewById(R.id.tyre41)),(findViewById(R.id.tyre42)),(findViewById(R.id.tyre43)),(findViewById(R.id.tyre44)),(findViewById(R.id.tyre45)),(findViewById(R.id.tyre46)),(findViewById(R.id.tyre47)),(findViewById(R.id.tyre48)),(findViewById(R.id.tyre49)),(findViewById(R.id.tyre50)),(findViewById(R.id.tyre51)),(findViewById(R.id.tyre52)),(findViewById(R.id.tyre53)),(findViewById(R.id.tyre54)),(findViewById(R.id.tyre55)),(findViewById(R.id.tyre56)),(findViewById(R.id.tyre57)),(findViewById(R.id.tyre58)),(findViewById(R.id.tyre59)),(findViewById(R.id.tyre60)),(findViewById(R.id.tyre61)),(findViewById(R.id.tyre62)),(findViewById(R.id.tyre63))};
         mc.wheels_table = (findViewById(R.id.wheels_table));
@@ -243,9 +243,6 @@ public class MainActivity extends AppCompatActivity {
         mc.tyre_text.setVisibility(View.INVISIBLE);
         mc.which_trailer_show= -1;
         populate_data(mc);
-        mc.update_trailers();
-        mc.show_trailer();
-        //new ClientSend().run();
 
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -331,20 +328,27 @@ public class MainActivity extends AppCompatActivity {
         mc.btntrailers[9].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 9"); mc.which_trailer_show = 9; show_trailer(mc);}});
         mc.btntrailers[10].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 10"); mc.which_trailer_show = 10; show_trailer(mc);}});
         
-        for(int i =0 ; i<64;i++ ){
+        /*for(int i =0 ; i<64;i++ ){
             mc.btnwheels[i].invalidate();
         }
 
         for(int i =0 ; i<11;i++ ){
             mc.btntrailers[i].invalidate();
-        }
+        }*/
+        Callable screenUpdate = new ScreenUpdate(mc);
+        Runnable clientListen = new ClientListen(mc,screenUpdate);
 
-        Runnable clientListen = new ClientListen(mc);
 
+        runOnUiThread(clientListen);
         Thread UDPList = new Thread( clientListen );
+        //Thread SCRupd = new Thread ( screenUpdate);
+//        runOnUiThread(UDPList);
+        //mc.update_trailers();
+        //mc.show_trailer();
+        //SCRupd.start();
 
         UDPList.start();
-
+        ((ScreenUpdate) screenUpdate).call();
     }
 
     @Override
