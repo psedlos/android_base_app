@@ -12,6 +12,8 @@ import android.support.design.animation.ImageMatrixProperty;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Layout;
 import android.util.Log;
@@ -28,7 +30,7 @@ import java.io.IOException;
 import java.util.concurrent.Callable;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MyRecyclerViewAdapter.ItemClickListener{
     FloatingActionButton fab;
     static String TAG = "MainActivity";
 
@@ -218,6 +220,8 @@ public class MainActivity extends AppCompatActivity {
         void callback();
     }
 
+    MyRecyclerViewAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -225,6 +229,16 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
+
+
+        String[] data = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48"};
+        RecyclerView recyclerView = findViewById(R.id.rvNumbers);
+        int numberOfColumn = 6;
+        recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumn));
+        adapter = new MyRecyclerViewAdapter(this, data);
+        adapter.setClickListener(this);
+        recyclerView.setAdapter(adapter);
+
 
         final MainContainer mc = new MainContainer();
 
@@ -349,6 +363,11 @@ public class MainActivity extends AppCompatActivity {
 
         UDPList.start();
         ((ScreenUpdate) screenUpdate).call();
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        Log.i("TAG", "You clicked number " + adapter.getItem(position) + ", which is at cell position " + position);
     }
 
     @Override
