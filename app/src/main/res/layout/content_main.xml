@@ -8,21 +8,11 @@
     tools:context=".MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rvNumbers"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
-    </RelativeLayout>
 
     <ScrollView
         android:id="@+id/scrollViewAllScreen"
-        android:layout_width="400dp"
+        android:layout_width="match_parent"
         android:layout_height="800dp"
         android:layout_weight="1"
         android:scrollbars="none"
@@ -182,7 +172,7 @@
 
             <ScrollView
                 android:id="@+id/scrollView2"
-                android:layout_width="400dp"
+                android:layout_width="match_parent"
                 android:layout_height="267dp"
                 android:layout_below="@+id/scrollView3"
                 android:layout_marginStart="0dp"
@@ -194,8 +184,20 @@
                 app:layout_constraintEnd_toEndOf="@+id/scrollView3"
                 app:layout_constraintStart_toStartOf="@+id/scrollView3"
                 app:layout_constraintTop_toBottomOf="@+id/scrollView3">
+                <RelativeLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/scrollViewAllScreen"
+                    >
 
-                <LinearLayout
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rvNumbers"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                </RelativeLayout>
+<!--                <LinearLayout
                     android:id="@+id/linearLayout"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -649,7 +651,7 @@
                         </TableRow>
 
                     </TableLayout>
-                </LinearLayout>
+                </LinearLayout>-->
             </ScrollView>
 
 
