@@ -36,8 +36,6 @@ public class MainActivity extends AppCompatActivity implements MyRecyclerViewAda
     FloatingActionButton fab;
     static String TAG = "MainActivity";
 
-    Looper looper;
-
     void populate_data(MainContainer mc){
         mc.trailers[1].wheels[10].updateWheel(40,10, Trailer.errors.NON, Trailer.statuses.ORANGE);
         mc.trailers[1].wheels[12].updateWheel(40,10, Trailer.errors.NON, Trailer.statuses.ORANGE);
@@ -75,7 +73,6 @@ public class MainActivity extends AppCompatActivity implements MyRecyclerViewAda
         mc.trailers[9].wheels[1].updateWheel(40,10, Trailer.errors.NON, Trailer.statuses.GREEN);
     }
 
-
     MyRecyclerViewAdapter adapter;
     RecyclerView recyclerView;
     MainContainer mc= new MainContainer(adapter, recyclerView);
@@ -96,13 +93,9 @@ public class MainActivity extends AppCompatActivity implements MyRecyclerViewAda
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
         mc= new MainContainer(adapter, recyclerView);
-        //final MainContainer mc = new MainContainer(adapter);
 
 
         mc.btntrailers = new ImageButton[] {findViewById(R.id.truck),findViewById(R.id.first_platform),findViewById(R.id.second_platform),findViewById(R.id.third_platform),findViewById(R.id.fourth_platform),findViewById(R.id.fifth_platform),findViewById(R.id.sixth_platform),findViewById(R.id.seventh_platform),findViewById(R.id.eight_platform),findViewById(R.id.nineth_platform),findViewById(R.id.tenth_platform)};
-        //mc.btnwheels = new ImageButton[] {(findViewById(R.id.tyre00)),(findViewById(R.id.tyre01)),(findViewById(R.id.tyre02)),(findViewById(R.id.tyre03)),(findViewById(R.id.tyre04)),(findViewById(R.id.tyre05)),(findViewById(R.id.tyre06)),(findViewById(R.id.tyre07)),(findViewById(R.id.tyre08)),(findViewById(R.id.tyre09)),(findViewById(R.id.tyre10)),(findViewById(R.id.tyre11)),(findViewById(R.id.tyre12)),(findViewById(R.id.tyre13)),(findViewById(R.id.tyre14)),(findViewById(R.id.tyre15)),(findViewById(R.id.tyre16)),(findViewById(R.id.tyre17)),(findViewById(R.id.tyre18)),(findViewById(R.id.tyre19)),(findViewById(R.id.tyre20)),(findViewById(R.id.tyre21)),(findViewById(R.id.tyre22)),(findViewById(R.id.tyre23)),(findViewById(R.id.tyre24)),(findViewById(R.id.tyre25)),(findViewById(R.id.tyre26)),(findViewById(R.id.tyre27)),(findViewById(R.id.tyre28)),(findViewById(R.id.tyre29)),(findViewById(R.id.tyre30)),(findViewById(R.id.tyre31)),(findViewById(R.id.tyre32)),(findViewById(R.id.tyre33)),(findViewById(R.id.tyre34)),(findViewById(R.id.tyre35)),(findViewById(R.id.tyre36)),(findViewById(R.id.tyre37)),(findViewById(R.id.tyre38)),(findViewById(R.id.tyre39)),(findViewById(R.id.tyre40)),(findViewById(R.id.tyre41)),(findViewById(R.id.tyre42)),(findViewById(R.id.tyre43)),(findViewById(R.id.tyre44)),(findViewById(R.id.tyre45)),(findViewById(R.id.tyre46)),(findViewById(R.id.tyre47)),(findViewById(R.id.tyre48)),(findViewById(R.id.tyre49)),(findViewById(R.id.tyre50)),(findViewById(R.id.tyre51)),(findViewById(R.id.tyre52)),(findViewById(R.id.tyre53)),(findViewById(R.id.tyre54)),(findViewById(R.id.tyre55)),(findViewById(R.id.tyre56)),(findViewById(R.id.tyre57)),(findViewById(R.id.tyre58)),(findViewById(R.id.tyre59)),(findViewById(R.id.tyre60)),(findViewById(R.id.tyre61)),(findViewById(R.id.tyre62)),(findViewById(R.id.tyre63))};
-
-        //mc.wheels_table = (findViewById(R.id.wheels_table));
         mc.tyre_text =findViewById(R.id.tyretext);
         mc.trailers = new Trailer[11];
         for (int i = 0; i<mc.trailers.length; i++){
@@ -115,15 +108,12 @@ public class MainActivity extends AppCompatActivity implements MyRecyclerViewAda
         mc.tyre_text.setVisibility(View.INVISIBLE);
         mc.which_trailer_show= -1;
         populate_data(mc);
-        //mc.update_trailers();
-        //mc.show_trailer();
 
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();}
         });
-       // for(int i=0 ;i<64; i++){mc.btnwheels[0] = adapter.}
 
         mc.btntrailers[0].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 0"); mc.which_trailer_show = 0; mc.show_trailer();}});
         mc.btntrailers[1].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 1"); mc.which_trailer_show = 1; mc.show_trailer();}});
@@ -136,27 +126,15 @@ public class MainActivity extends AppCompatActivity implements MyRecyclerViewAda
         mc.btntrailers[8].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 8"); mc.which_trailer_show = 8; mc.show_trailer();}});
         mc.btntrailers[9].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 9"); mc.which_trailer_show = 9; mc.show_trailer();}});
         mc.btntrailers[10].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 10"); mc.which_trailer_show = 10; mc.show_trailer();}});
-        
-        //mc.btnwheels = adapter.getmImageViews();
-//        looper.prepare();
 
-        Runnable clientListen = new ClientListen(mc/*,screenUpdate*/);
 
-        //runOnUiThread(clientListen);
+        Runnable clientListen = new ClientListen(mc);
+
         Thread UDPList = new Thread( clientListen );
-        //Thread SCRupd = new Thread ( screenUpdate);
-//        runOnUiThread(UDPList);
-        //mc.update_trailers();
-        //mc.show_trailer();
-        //SCRupd.start();
-
         UDPList.start();
 
         mc.update_trailers();
         mc.show_trailer();
- //       mc.setListener(mc.listener);
-
-       // ((ScreenUpdate) screenUpdate).call();
     }
 
     @Override
@@ -186,6 +164,4 @@ public class MainActivity extends AppCompatActivity implements MyRecyclerViewAda
 
         return super.onOptionsItemSelected(item);
     }
-
-
 }

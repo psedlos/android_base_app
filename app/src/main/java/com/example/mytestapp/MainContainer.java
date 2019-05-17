@@ -19,44 +19,15 @@ import android.widget.TextView;
 
 public class MainContainer extends Application {
 
-    ImageButton[] trbtn;
-    ImageView[] btnwheels;
+
     int which_trailer_show;
     ImageButton[] btntrailers;
-    View tyre_info_view;
     String tyre_description;
     Trailer[] trailers;
     TextView tyre_text;
     int trailer_number;
-    TableLayout wheels_table;
-    int screen_update=0;
     MyRecyclerViewAdapter adapter;
     RecyclerView recyclerView;
-    NumberPicker.OnValueChangeListener listener;
-    NumberPicker picker;
-
-/*    public class Screen_update implements Runnable {
-        @Override
-        public void run() {
-            show_trailer();
-        }
-    }
-    public void setListener(NumberPicker.OnValueChangeListener listener){
-        this.listener = listener;
-    }
-    public void setScreen_update(int screen_update){
-        this.screen_update = screen_update;
-        if(listener != null) listener.onValueChange( picker,0, 1);
-    }
-    public NumberPicker.OnValueChangeListener getListener(){
-        return listener;
-    }
-    public int isScreen_update (){
-        return screen_update;
-    }
-    public interface OnValueChangeListener{
-        void onChange();
-    }*/
 
     public MainContainer(MyRecyclerViewAdapter adapter, RecyclerView recyclerView) {
         Trailer[] trailers = new Trailer[11];
@@ -67,15 +38,6 @@ public class MainContainer extends Application {
             }
         }
         trailers[0].typeoftralier = Trailer.typeoftraliers.TRUCK;
-        ImageView[] btnwheels;
-        int which_trailer_show;
-        ImageButton[] btntrailers;
-        View tyre_info_view;
-        String tyre_description;
-        TextView tyre_text;
-        int trailer_number;
-        TableLayout wheels_table;
-        Boolean screen_update = false;
         this.adapter = adapter;
         this.recyclerView =recyclerView;
     }
@@ -219,20 +181,6 @@ public class MainContainer extends Application {
                     }
                 }
             });
-/*            recyclerView.setAlpha(1);
-            this.tyre_text.setVisibility(View.INVISIBLE);
-            for(int i = 0 ; i<64 ; i++){
-                adapter.imageView(i).invalidate();
-                if(this.trailers[this.which_trailer_show].wheels[i].status == Trailer.statuses.GREEN){
-                    adapter.imageView(i).setImageResource(R.mipmap.green_tyre);}
-                else if(this.trailers[this.which_trailer_show].wheels[i].status == Trailer.statuses.ORANGE){
-                    adapter.imageView(i).setImageResource(R.mipmap.yellow_tyre);}
-                else if(this.trailers[this.which_trailer_show].wheels[i].status == Trailer.statuses.RED){
-                    adapter.imageView(i).setImageResource(R.mipmap.red_tyre);}
-                else if(this.trailers[this.which_trailer_show].wheels[i].status == Trailer.statuses.BLACK){
-                    adapter.imageView(i).setImageResource(R.mipmap.tyre_black);}
-                adapter.imageView(i).postInvalidate();
-            }*/
         }
 
     }

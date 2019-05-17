@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetSocketAddress;
-import java.util.concurrent.Callable;
 
 
 public class ClientListen implements Runnable {
@@ -16,12 +15,11 @@ public class ClientListen implements Runnable {
 
     public ClientListen(MainContainer mc){
         this.mc = mc;
-        }
+    }
 
     int trailerNo;
     int stat_int;
     int addr_int;
-
 
     @Override
     public void run() {
@@ -57,7 +55,7 @@ public class ClientListen implements Runnable {
                             mc.trailers[1].typeoftralier = Trailer.typeoftraliers.TRAILER;
                         }
                     } else if (intmessage[1] == 'f' && intmessage[2] == 'f' && intmessage[3] == '2' && intmessage[4] == '0') {
-                        trailerNo = (int) intmessage[7];
+                        trailerNo = intmessage[7];
                         if (intmessage[8] == 0) {
                             mc.trailers[trailerNo].error = Trailer.errors.NON;
                         } else if (intmessage[8] == 1) {
@@ -67,8 +65,8 @@ public class ClientListen implements Runnable {
                         } else if (intmessage[8] == 3) {
                             mc.trailers[trailerNo].error = Trailer.errors.CCUs;
                         }
-                        mc.trailers[trailerNo].numberOfAxles = (int) intmessage[9];
-                        mc.trailers[trailerNo].numberOfWheels = (int) intmessage[10];
+                        mc.trailers[trailerNo].numberOfAxles = intmessage[9];
+                        mc.trailers[trailerNo].numberOfWheels = intmessage[10];
                     } else if (intmessage[1] == 'f' && intmessage[2] == 'f' && intmessage[3] == '3' && intmessage[4] == '0') {
                         trailerNo = intmessage[7] - 48;
                         for (int i = 0; i < 8; i++) {
@@ -94,16 +92,6 @@ public class ClientListen implements Runnable {
                     }
                 }
                 mc.show_trailer();
-                /*new MainActivity().runOnUiThread(new Runnable() {
-
-                    @Override
-                    public void run() {
-
-                        mc.show_trailer();
-                        Log.i("SCR", "Update should be done");
-                    }
-                });
-                */
 
             } catch (IOException e) {
                 Log.e("UDP Client has IOE", "error: ", e);
