@@ -1,7 +1,10 @@
 package com.example.mytestapp;
 
 import android.app.Activity;
+import android.app.ActivityManager;
+import android.content.pm.ActivityInfo;
 import android.os.Looper;
+import android.support.annotation.MainThread;
 import android.util.Log;
 
 import java.io.IOException;
@@ -46,52 +49,9 @@ public class ClientListen implements Runnable {
                 String text = new String(intmessage, 0, packet.getLength());
                 Log.d("Received Data", text);
 
-                if (intmessage[0] == '$' && intmessage[5] == '^') {
-                    if (intmessage[1] == 'f' && intmessage[2] == 'f' && intmessage[3] == '1' && intmessage[4] == '0') {
-                        mc.trailer_number = intmessage[7];
-                        if (intmessage[8] == 1) {
-                            mc.trailers[1].typeoftralier = Trailer.typeoftraliers.PLATFORM;
-                        } else if (intmessage[8] == 2) {
-                            mc.trailers[1].typeoftralier = Trailer.typeoftraliers.TRAILER;
-                        }
-                    } else if (intmessage[1] == 'f' && intmessage[2] == 'f' && intmessage[3] == '2' && intmessage[4] == '0') {
-                        trailerNo = intmessage[7];
-                        if (intmessage[8] == 0) {
-                            mc.trailers[trailerNo].error = Trailer.errors.NON;
-                        } else if (intmessage[8] == 1) {
-                            mc.trailers[trailerNo].error = Trailer.errors.CCU1;
-                        } else if (intmessage[8] == 2) {
-                            mc.trailers[trailerNo].error = Trailer.errors.CCU2;
-                        } else if (intmessage[8] == 3) {
-                            mc.trailers[trailerNo].error = Trailer.errors.CCUs;
-                        }
-                        mc.trailers[trailerNo].numberOfAxles = intmessage[9];
-                        mc.trailers[trailerNo].numberOfWheels = intmessage[10];
-                    } else if (intmessage[1] == 'f' && intmessage[2] == 'f' && intmessage[3] == '3' && intmessage[4] == '0') {
-                        trailerNo = intmessage[7] - 48;
-                        for (int i = 0; i < 8; i++) {
-                            stat_int = intmessage[(8 + i)] / 64;
-                            addr_int = intmessage[(8 + i)] % 64;
-                            switch (stat_int) {
-                                case 0:
-                                    mc.trailers[trailerNo].wheels[addr_int].status = Trailer.Wheel.statuses.BLACK;
-                                    break;
-                                case 1:
-                                    mc.trailers[trailerNo].wheels[addr_int].status = Trailer.Wheel.statuses.GREEN;
-                                    break;
-                                case 2:
-                                    mc.trailers[trailerNo].wheels[addr_int].status = Trailer.Wheel.statuses.ORANGE;
-                                    break;
-                                case 3:
-                                    mc.trailers[trailerNo].wheels[addr_int].status = Trailer.Wheel.statuses.RED;
-                                    break;
-                            }
-                        }
-                    } else if (intmessage[1] == 'f' && intmessage[2] == 'f' && intmessage[3] == '4' && intmessage[4] == '0') {
 
-                    }
-                }
-                mc.show_trailer();
+                mc.distribuate_data(intmessage);
+
 
             } catch (IOException e) {
                 Log.e("UDP Client has IOE", "error: ", e);

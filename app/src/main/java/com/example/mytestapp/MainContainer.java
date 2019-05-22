@@ -8,6 +8,7 @@ import android.os.Looper;
 import android.support.annotation.UiThread;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -30,14 +31,14 @@ public class MainContainer extends Application {
     RecyclerView recyclerView;
 
     public MainContainer(MyRecyclerViewAdapter adapter, RecyclerView recyclerView) {
-        Trailer[] trailers = new Trailer[11];
+        this.trailers = new Trailer[11];
         for (int i = 0; i < trailers.length; i++) {
-            trailers[i] = new Trailer();
+            this.trailers[i] = new Trailer();
             for (int j = 0; j < trailers[i].wheels.length; j++) {
-                trailers[i].wheels[j] = trailers[i].new Wheel();
+                this.trailers[i].wheels[j] = trailers[i].new Wheel();
             }
         }
-        trailers[0].typeoftralier = Trailer.typeoftraliers.TRUCK;
+        this.trailers[0].typeoftralier = Trailer.typeoftraliers.TRUCK;
         this.adapter = adapter;
         this.recyclerView =recyclerView;
     }
@@ -194,5 +195,57 @@ public class MainContainer extends Application {
 
         tyre_description = "Pressure: " + trailers[which_trailer_show].wheels[tyre_number].getPress() + "\n" + "Temperature: " + trailers[which_trailer_show].wheels[tyre_number].getTemp();
         tyre_text.setText(tyre_description);
+    }
+    public void distribuate_data(int[] intmessage){
+        int trailerNo;
+        int stat_int;
+        int addr_int;
+        if (intmessage[0] == '$' && intmessage[5] == '^') {
+            if (intmessage[1] == 'f' && intmessage[2] == 'f' && intmessage[3] == '1' && intmessage[4] == '0') {
+                this.trailer_number = intmessage[7];
+                if (intmessage[8] == 1) {
+                    this.trailers[1].typeoftralier = Trailer.typeoftraliers.PLATFORM;
+                } else if (intmessage[8] == 2) {
+                    this.trailers[1].typeoftralier = Trailer.typeoftraliers.TRAILER;
+                }
+            } else if (intmessage[1] == 'f' && intmessage[2] == 'f' && intmessage[3] == '2' && intmessage[4] == '0') {
+                trailerNo = intmessage[7];
+                if (intmessage[8] == 0) {
+                    this.trailers[trailerNo].error = Trailer.errors.NON;
+                } else if (intmessage[8] == 1) {
+                    this.trailers[trailerNo].error = Trailer.errors.CCU1;
+                } else if (intmessage[8] == 2) {
+                    this.trailers[trailerNo].error = Trailer.errors.CCU2;
+                } else if (intmessage[8] == 3) {
+                    this.trailers[trailerNo].error = Trailer.errors.CCUs;
+                }
+                this.trailers[trailerNo].numberOfAxles = intmessage[9];
+                this.trailers[trailerNo].numberOfWheels = intmessage[10];
+            } else if (intmessage[1] == 'f' && intmessage[2] == 'f' && intmessage[3] == '3' && intmessage[4] == '0') {
+                trailerNo = intmessage[7] - 48;
+                for (int i = 0; i < 8; i++) {
+                    stat_int = intmessage[(8 + i)] / 64;
+                    addr_int = intmessage[(8 + i)] % 64;
+                    switch (stat_int) {
+                        case 0:
+                            this.trailers[trailerNo].wheels[addr_int].status = Trailer.Wheel.statuses.BLACK;
+                            break;
+                        case 1:
+                            this.trailers[trailerNo].wheels[addr_int].status = Trailer.Wheel.statuses.GREEN;
+                            break;
+                        case 2:
+                            this.trailers[trailerNo].wheels[addr_int].status = Trailer.Wheel.statuses.ORANGE;
+                            break;
+                        case 3:
+                            this.trailers[trailerNo].wheels[addr_int].status = Trailer.Wheel.statuses.RED;
+                            break;
+                    }
+                }
+            } else if (intmessage[1] == 'f' && intmessage[2] == 'f' && intmessage[3] == '4' && intmessage[4] == '0') {
+
+            }
+        }
+        this.show_trailer();
+
     }
 }

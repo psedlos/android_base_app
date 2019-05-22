@@ -9,9 +9,9 @@ import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.SocketException;
 
-public class ClientSend implements Runnable{
-    @Override
-    public void run(){
+public class ClientSend{
+
+    public void sendText(String textToSend){
         try {
             DatagramSocket udpSocket = new DatagramSocket(null);
             if (udpSocket.isBound()){
@@ -21,9 +21,9 @@ public class ClientSend implements Runnable{
 
             InetSocketAddress port = new InetSocketAddress(64444);
             udpSocket.bind( port);
-            InetAddress serverAddr = InetAddress.getByName("192.168.0.111");
-            byte[] buf = ("The String to Send").getBytes();
-            DatagramPacket packet = new DatagramPacket(buf,0, buf.length, serverAddr, 64443);
+            InetAddress serverAddr = InetAddress.getByName("192.168.0.76");
+            byte[] buf = textToSend.getBytes();
+            DatagramPacket packet = new DatagramPacket(buf,0, buf.length, serverAddr, 2148);
             udpSocket.send(packet);
             udpSocket.close();
         }

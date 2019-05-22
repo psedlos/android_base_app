@@ -10,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.ImageView;
 
+import java.io.IOError;
+import java.io.IOException;
+
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder> {
 
     private String[] mData;
@@ -65,7 +68,11 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
         @Override
         public void onClick(View view) {
-            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
+            try {
+                if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
+            } catch (IOError e){
+                Log.i("RecView",e.getMessage());
+            }
         }
     }
 
