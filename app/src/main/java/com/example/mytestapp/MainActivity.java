@@ -33,7 +33,7 @@ import java.io.IOException;
 import java.util.concurrent.Callable;
 
 
-public class MainActivity extends AppCompatActivity implements MyRecyclerViewAdapter.ItemClickListener{
+public class MainActivity extends BaseActivity implements MyRecyclerViewAdapter.ItemClickListener{
     static String TAG = "MainActivity";
     ClientSend clientSend = new ClientSend();
     void populate_data(MainContainer mc){
@@ -131,41 +131,5 @@ public class MainActivity extends AppCompatActivity implements MyRecyclerViewAda
     public void onItemClick(View view, int position) {
         Log.i("TAG", "You clicked number " + adapter.getItem(position) + ", which is at cell position " + position);
         mc.show_tyre(position);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            textToSend = "Settings Button";
-            Log.i("ClSnd", textToSend);
-            clientSend.sendText(textToSend);
-            return true;
-        }
-        if (id == R.id.show_main) {
-            Intent myIntent = new Intent(this, MainActivity.class);
-            startActivity(myIntent);
-            return true;
-        }
-        if (id == R.id.show_radio) {
-            Log.i("MM","Show radio");
-            Intent myIntent = new Intent(this, RadioActivity.class);
-            startActivity(myIntent);
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

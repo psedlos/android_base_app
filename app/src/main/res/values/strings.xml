@@ -2,4 +2,7 @@
     <string name="app_name">MyTestApp</string>
     <string name="action_settings">Settings</string>
     <string name="tyre__text">Pressure:</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="title_activity_driver_interface">DriverInterface</string>
 </resources>

@@ -1,26 +1,13 @@
 package com.example.mytestapp;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class RadioActivity extends BaseActivity {
-    ClientSend clientSend = new ClientSend();
-    String textToSend = "text";
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.radio_activity);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-    }
-
+public class BaseActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -37,9 +24,6 @@ public class RadioActivity extends BaseActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            textToSend = "Settings Button";
-            Log.i("ClSnd", textToSend);
-            clientSend.sendText(textToSend);
             return true;
         }
         if (id == R.id.show_main) {
@@ -48,8 +32,12 @@ public class RadioActivity extends BaseActivity {
             return true;
         }
         if (id == R.id.show_radio) {
-            Log.i("MM","Show radio");
             Intent myIntent = new Intent(this, RadioActivity.class);
+            startActivity(myIntent);
+            return true;
+        }
+        if (id == R.id.show_driver) {
+            Intent myIntent = new Intent(this, DriverInterface.class);
             startActivity(myIntent);
             return true;
         }
