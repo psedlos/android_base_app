@@ -17,7 +17,7 @@
         <activity
             android:name=".DriverInterface"
             android:label="@string/title_activity_driver_interface"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <receiver android:name=".VerticalSeekBar">
             <intent-filter>

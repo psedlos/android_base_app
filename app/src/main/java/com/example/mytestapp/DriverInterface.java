@@ -1,5 +1,7 @@
 package com.example.mytestapp;
 
+import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener2;
@@ -18,30 +20,65 @@ import de.nitri.gauge.Gauge;
 
 public class DriverInterface extends BaseActivity {
 
+    public static Gauge gauge;
+    private SensorManager mSensorManager;
+    private Sensor mAccelerometer;
+    private ShakeDetector mShakeDetector;
 
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_interface);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Gauge gauge = findViewById(R.id.gauge);
-        SensorManager sensorMgr = (SensorManager) getSystemService(SENSOR_SERVICE);
-        Sensor sensor;
-        sensor = sensorMgr.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
-        while (true) {
-            gauge.moveToValue((float) sensor.getFifoReservedEventCount());
-            try {
-                wait(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+
+
+        gauge = findViewById(R.id.gauge);
+        gauge.moveToValue(1);
+
+        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        mAccelerometer = mSensorManager
+                .getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        mShakeDetector = new ShakeDetector();
+        mShakeDetector.setOnShakeListener(new ShakeDetector.OnShakeListener() {
+
+            @Override
+            public void onShake(int count) {
+                /*
+                 * The following method, "handleShakeEvent(count):" is a stub //
+                 * method you would use to setup whatever you want done once the
+                 * device has been shook.
+                 */
+                DriverInterface.gauge.moveToValue(count);
+                //tvShake.setText("Shake Action is just detected!!");
+                //Toast.makeText(MainActivity.this, "Shaked!!!", Toast.LENGTH_SHORT).show();
             }
-        }
+        });
 
 
 
 
+        Intent intent = new Intent(this, ShakeService.class);
+        //Start Service
+        startService(intent);
+
+
+
+
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        // Add the following line to register the Session Manager Listener onResume
+        mSensorManager.registerListener(mShakeDetector, mAccelerometer,	SensorManager.SENSOR_DELAY_UI);
+    }
+
+
+    @Override
+    public void onPause() {
+        // Add the following line to unregister the Sensor Manager onPause
+        mSensorManager.unregisterListener(mShakeDetector);
+        super.onPause();
     }
 }
