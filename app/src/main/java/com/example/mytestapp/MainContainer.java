@@ -30,7 +30,21 @@ public class MainContainer extends Application {
     MyRecyclerViewAdapter adapter;
     RecyclerView recyclerView;
 
-    public MainContainer(MyRecyclerViewAdapter adapter, RecyclerView recyclerView) {
+    public void mainContainerFeed(MyRecyclerViewAdapter adapter, RecyclerView recyclerView) {
+        if(this.trailers == null){
+            this.trailers = new Trailer[11];
+            for (int i = 0; i < trailers.length; i++) {
+                this.trailers[i] = new Trailer();
+                for (int j = 0; j < trailers[i].wheels.length; j++) {
+                    this.trailers[i].wheels[j] = trailers[i].new Wheel();
+                }
+            }
+            this.trailers[0].typeoftralier = Trailer.typeoftraliers.TRUCK;
+        }
+        this.adapter = adapter;
+        this.recyclerView =recyclerView;
+    }
+    public MainContainer() {
         this.trailers = new Trailer[11];
         for (int i = 0; i < trailers.length; i++) {
             this.trailers[i] = new Trailer();
@@ -39,8 +53,6 @@ public class MainContainer extends Application {
             }
         }
         this.trailers[0].typeoftralier = Trailer.typeoftraliers.TRUCK;
-        this.adapter = adapter;
-        this.recyclerView =recyclerView;
     }
     public void  update_trailers(){
         ViewGroup.LayoutParams layoutparams;
@@ -160,13 +172,13 @@ public class MainContainer extends Application {
     public void show_trailer() {
         recyclerView.invalidateItemDecorations();
         if (this.which_trailer_show<0 || this.which_trailer_show >11) {
-            recyclerView.setAlpha(0);
+            recyclerView.setVisibility(View.INVISIBLE);
         }
         else{
             new Handler(Looper.getMainLooper()).post(new Runnable() {
                 @Override
                 public void run() {
-                    recyclerView.setAlpha(1);
+                    recyclerView.setVisibility(View.VISIBLE);
                     tyre_text.setVisibility(View.INVISIBLE);
                     for(int i = 0 ; i<64 ; i++){
                         adapter.imageView(i).invalidate();

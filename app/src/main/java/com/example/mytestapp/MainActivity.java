@@ -75,8 +75,7 @@ public class MainActivity extends BaseActivity implements MyRecyclerViewAdapter.
     String textToSend = "text";
 
     MyRecyclerViewAdapter adapter;
-    //RecyclerView recyclerView;
-    MainContainer mc;//= new MainContainer(adapter, recyclerView);
+    //MainContainer mc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +83,8 @@ public class MainActivity extends BaseActivity implements MyRecyclerViewAdapter.
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        if(this.mc == null)
+        {mc = new MainContainer();}
 
         String[] data = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64"};
         RecyclerView recyclerView = findViewById(R.id.rvNumbers);
@@ -92,8 +93,8 @@ public class MainActivity extends BaseActivity implements MyRecyclerViewAdapter.
         adapter = new MyRecyclerViewAdapter(this, data);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
-        mc= new MainContainer(adapter, recyclerView);
 
+        mc.mainContainerFeed(adapter, recyclerView);
 
         mc.btntrailers = new ImageButton[] {findViewById(R.id.truck),findViewById(R.id.first_platform),findViewById(R.id.second_platform),findViewById(R.id.third_platform),findViewById(R.id.fourth_platform),findViewById(R.id.fifth_platform),findViewById(R.id.sixth_platform),findViewById(R.id.seventh_platform),findViewById(R.id.eight_platform),findViewById(R.id.nineth_platform),findViewById(R.id.tenth_platform)};
         mc.tyre_text =findViewById(R.id.tyretext);
@@ -101,7 +102,6 @@ public class MainActivity extends BaseActivity implements MyRecyclerViewAdapter.
         Log.i(TAG, "It is alive!");
         mc.tyre_text.setVisibility(View.INVISIBLE);
         mc.which_trailer_show= -1;
-        //populate_data(mc);
 
         mc.btntrailers[0].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 0"); mc.which_trailer_show = 0; mc.show_trailer();}});
         mc.btntrailers[1].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 1"); mc.which_trailer_show = 1; mc.show_trailer();}});
@@ -115,11 +115,9 @@ public class MainActivity extends BaseActivity implements MyRecyclerViewAdapter.
         mc.btntrailers[9].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 9"); mc.which_trailer_show = 9; mc.show_trailer();}});
         mc.btntrailers[10].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 10"); mc.which_trailer_show = 10; mc.show_trailer();}});
 
-
-        Runnable clientListen = new ClientListen(mc);
-
-        Thread UDPList = new Thread( clientListen );
-        UDPList.start();
+//        Runnable clientListen = new ClientListen(mc);
+//        Thread UDPList = new Thread( clientListen );
+//        UDPList.start();
 
 
 

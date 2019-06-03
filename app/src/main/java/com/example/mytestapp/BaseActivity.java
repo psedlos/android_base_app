@@ -8,10 +8,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class BaseActivity extends AppCompatActivity {
+    static public MainContainer mc;// = new MainContainer();
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+        if(this.mc == null)
+        {mc = new MainContainer();}
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        Runnable clientListen = new ClientListen(mc);
+        Thread UDPList = new Thread( clientListen );
+        UDPList.start();
         return true;
     }
 

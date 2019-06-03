@@ -19,21 +19,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <LinearLayout
             android:id="@+id/linearLayout3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <RelativeLayout
-            android:id="@+id/wholemainscreen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="parent">
 
-            <ImageButton
+            <RelativeLayout
+                android:id="@+id/wholemainscreen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent">
+
+                <ImageButton
                 android:id="@+id/truck"
                 android:layout_width="77dp"
                 android:layout_height="84dp"
@@ -53,37 +55,36 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@android:drawable/sym_contact_card" />
 
-            <HorizontalScrollView
-                android:id="@+id/scrollView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/truck"
-                android:scrollbars="none"
-                app:layout_constraintEnd_toEndOf="@+id/truck"
-                app:layout_constraintStart_toStartOf="@+id/truck"
-                app:layout_constraintTop_toBottomOf="@+id/truck">
-
-                <LinearLayout
-                    android:id="@+id/linearLayout2"
+                <HorizontalScrollView
+                    android:id="@+id/scrollView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TableLayout
-                        android:id="@+id/trailers_table"
-                        android:layout_width="800dp"
-                        android:layout_height="84dp"
-                        android:orientation="horizontal"
-                        android:scrollbars="horizontal"
-                        tools:layout_editor_absoluteY="0dp">
+                    android:layout_below="@+id/truck"
+                    android:scrollbars="none"
+                    app:layout_constraintEnd_toEndOf="@+id/truck"
+                    app:layout_constraintStart_toStartOf="@+id/truck"
+                    app:layout_constraintTop_toBottomOf="@+id/truck">
 
-                        <TableRow
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center">
+                    <LinearLayout
+                        android:id="@+id/linearLayout2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
+                        <TableLayout
+                            android:id="@+id/trailers_table"
+                            android:layout_width="800dp"
+                            android:layout_height="84dp"
+                            android:orientation="horizontal"
+                            android:scrollbars="horizontal"
+                            tools:layout_editor_absoluteY="0dp">
 
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center">
 
-                            <ImageButton
+                                <ImageButton
                                 android:id="@+id/first_platform"
                                 android:layout_width="70dp"
                                 android:layout_height="84dp"
@@ -91,7 +92,7 @@
                                 android:contentDescription="Show First Platform"
                                 app:srcCompat="@mipmap/tralier2ccu_eng" />
 
-                            <ImageButton
+                                <ImageButton
                                 android:id="@+id/second_platform"
                                 android:layout_width="70dp"
                                 android:layout_height="84dp"
@@ -99,7 +100,7 @@
                                 android:contentDescription="Show Second Platform"
                                 app:srcCompat="@android:drawable/sym_contact_card" />
 
-                            <ImageButton
+                                <ImageButton
                                 android:id="@+id/third_platform"
                                 android:layout_width="70dp"
                                 android:layout_height="84dp"
@@ -107,7 +108,7 @@
                                 android:contentDescription="Show Third Platform"
                                 app:srcCompat="@android:drawable/sym_contact_card" />
 
-                            <ImageButton
+                                <ImageButton
                                 android:id="@+id/fourth_platform"
                                 android:layout_width="70dp"
                                 android:layout_height="84dp"
@@ -115,8 +116,7 @@
                                 android:contentDescription="Show Fourth Platform"
                                 app:srcCompat="@android:drawable/sym_contact_card" />
 
-
-                            <ImageButton
+                                <ImageButton
                                 android:id="@+id/fifth_platform"
                                 android:layout_width="70dp"
                                 android:layout_height="84dp"
@@ -124,7 +124,7 @@
                                 android:contentDescription="Show Fifth Platform"
                                 app:srcCompat="@android:drawable/sym_contact_card" />
 
-                            <ImageButton
+                                <ImageButton
                                 android:id="@+id/sixth_platform"
                                 android:layout_width="70dp"
                                 android:layout_height="84dp"
@@ -132,7 +132,7 @@
                                 android:contentDescription="Show Fifth Platform"
                                 app:srcCompat="@android:drawable/sym_contact_card" />
 
-                            <ImageButton
+                                <ImageButton
                                 android:id="@+id/seventh_platform"
                                 android:layout_width="70dp"
                                 android:layout_height="84dp"
@@ -140,7 +140,7 @@
                                 android:contentDescription="Show Fifth Platform"
                                 app:srcCompat="@android:drawable/sym_contact_card" />
 
-                            <ImageButton
+                                <ImageButton
                                 android:id="@+id/eight_platform"
                                 android:layout_width="70dp"
                                 android:layout_height="84dp"
@@ -148,7 +148,7 @@
                                 android:contentDescription="Show Fifth Platform"
                                 app:srcCompat="@android:drawable/sym_contact_card" />
 
-                            <ImageButton
+                                <ImageButton
                                 android:id="@+id/nineth_platform"
                                 android:layout_width="70dp"
                                 android:layout_height="84dp"
@@ -156,7 +156,7 @@
                                 android:contentDescription="Show Fifth Platform"
                                 app:srcCompat="@android:drawable/sym_contact_card" />
 
-                            <ImageButton
+                                <ImageButton
                                 android:id="@+id/tenth_platform"
                                 android:layout_width="70dp"
                                 android:layout_height="84dp"
@@ -164,61 +164,58 @@
                                 android:contentDescription="Show Fifth Platform"
                                 app:srcCompat="@android:drawable/sym_contact_card" />
 
-                        </TableRow>
-                    </TableLayout>
-                </LinearLayout>
-            </HorizontalScrollView>
+                            </TableRow>
+                        </TableLayout>
+                    </LinearLayout>
+                </HorizontalScrollView>
 
-
-            <ScrollView
-                android:id="@+id/scrollView2"
-                android:layout_width="match_parent"
-                android:layout_height="267dp"
-                android:layout_below="@+id/scrollView3"
-                android:layout_marginStart="0dp"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginEnd="0dp"
-                android:layout_marginRight="0dp"
-                android:scrollbars="none"
-                app:layout_constraintEnd_toEndOf="@+id/scrollView3"
-                app:layout_constraintStart_toStartOf="@+id/scrollView3"
-                app:layout_constraintTop_toBottomOf="@+id/scrollView3">
-                <RelativeLayout
-                    xmlns:android="http://schemas.android.com/apk/res/android"
+                <ScrollView
+                    android:id="@+id/scrollView2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@+id/scrollViewAllScreen"
-                    >
+                    android:layout_height="267dp"
+                    android:layout_below="@+id/scrollView3"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginRight="0dp"
+                    android:scrollbars="none"
+                    app:layout_constraintEnd_toEndOf="@+id/scrollView3"
+                    app:layout_constraintStart_toStartOf="@+id/scrollView3"
+                    app:layout_constraintTop_toBottomOf="@+id/scrollView3">
 
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/rvNumbers"
+                    <RelativeLayout
+                        xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:id="@+id/wheelRelativeLayout"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="wrap_content">
 
-                </RelativeLayout>
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/rvNumbers"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
 
-            </ScrollView>
+                    </RelativeLayout>
 
+                </ScrollView>
 
-            <TextView
-                android:id="@+id/tyretext"
-                android:layout_width="wrap_content"
-                android:layout_height="150dp"
-                android:layout_below="@+id/scrollView2"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginStart="157dp"
-                android:layout_marginLeft="157dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="110dp"
-                android:layout_marginRight="110dp"
-                android:text="@string/tyre__text" />
+                <TextView
+                    android:id="@+id/tyretext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dp"
+                    android:layout_below="@+id/scrollView2"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginStart="157dp"
+                    android:layout_marginLeft="157dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="110dp"
+                    android:layout_marginRight="110dp"
+                    android:text="@string/tyre__text" />
 
-
-        </RelativeLayout>
+            </RelativeLayout>
         </LinearLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>
