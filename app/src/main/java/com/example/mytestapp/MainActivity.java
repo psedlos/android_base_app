@@ -90,11 +90,14 @@ public class MainActivity extends BaseActivity implements MyRecyclerViewAdapter.
         RecyclerView recyclerView = findViewById(R.id.rvNumbers);
         int numberOfColumn = 8;
         recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumn));
-        adapter = new MyRecyclerViewAdapter(this, data);
+        adapter = new MyRecyclerViewAdapter(this, mc.trailers[1].wheels);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
+        Context mainActivityContext = this;
+        MyRecyclerViewAdapter.ItemClickListener mainActivityItemClickListener = this;
 
-        mc.mainContainerFeed(adapter, recyclerView);
+
+        mc.mainContainerFeed(adapter, recyclerView,mainActivityContext,mainActivityItemClickListener);
 
         mc.btntrailers = new ImageButton[] {findViewById(R.id.truck),findViewById(R.id.first_platform),findViewById(R.id.second_platform),findViewById(R.id.third_platform),findViewById(R.id.fourth_platform),findViewById(R.id.fifth_platform),findViewById(R.id.sixth_platform),findViewById(R.id.seventh_platform),findViewById(R.id.eight_platform),findViewById(R.id.nineth_platform),findViewById(R.id.tenth_platform)};
         mc.tyre_text =findViewById(R.id.tyretext);
