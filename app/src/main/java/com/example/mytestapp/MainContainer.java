@@ -1,8 +1,11 @@
 package com.example.mytestapp;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.Application;
+import android.app.Instrumentation;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.hardware.camera2.params.BlackLevelPattern;
@@ -13,6 +16,8 @@ import android.os.Looper;
 import android.support.annotation.RequiresApi;
 import android.support.annotation.UiThread;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityManagerCompat;
+import android.support.v7.widget.ActivityChooserView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -23,6 +28,8 @@ import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.TableLayout;
 import android.widget.TextView;
+
+import static com.example.mytestapp.BaseActivity.mc;
 //import android.support.design.R;
 
 
@@ -30,6 +37,8 @@ public class MainContainer extends Application {
 
 
     int which_trailer_show;
+    int which_tyre_show;
+    int tyre_number;
     ImageButton[] btntrailers;
     String tyre_description;
     Trailer[] trailers;
@@ -195,50 +204,34 @@ public class MainContainer extends Application {
             recyclerView.setVisibility(View.INVISIBLE);
         }
         else{
-//
             new Handler(Looper.getMainLooper()).post(new Runnable() {
                 @Override
                 public void run() {
                     recyclerView.setVisibility(View.VISIBLE);
                     tyre_text.setVisibility(View.INVISIBLE);
-//                    recyclerView.setLayoutManager(new GridLayoutManager(mainActivityContext, trailers[which_trailer_show].numberOfWheels/trailers[which_trailer_show].numberOfAxles));//
-//                    adapter = new MyRecyclerViewAdapter(mainActivityContext, trailers[which_trailer_show].numberOfWheels);
-                    //adapter.setClickListener(mainActivityItemClickListener);
-                    //recyclerView.setAdapter(adapter);
                     adapter.updateNumberOfGrids(trailers[which_trailer_show].wheels);
                     recyclerView.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
-//
-
-                   /* for(int i = 0 ; i<trailers[which_trailer_show].numberOfWheels ; i++){
-                        adapter.imageView(i).invalidate();
-                        adapter.imageView(i).setBackgroundColor(-16754869);
-                            adapter.imageView(i).setVisibility(View.VISIBLE);
-                            if(trailers[which_trailer_show].wheels[i].status == Trailer.statuses.GREEN){
-                                adapter.imageView(i).setImageResource(R.mipmap.green_tyre);}
-                            else if(trailers[which_trailer_show].wheels[i].status == Trailer.statuses.ORANGE){
-                                adapter.imageView(i).setImageResource(R.mipmap.yellow_tyre);}
-                            else if(trailers[which_trailer_show].wheels[i].status == Trailer.statuses.RED){
-                                adapter.imageView(i).setImageResource(R.mipmap.red_tyre);}
-                            else if(trailers[which_trailer_show].wheels[i].status == Trailer.statuses.BLACK){
-                                adapter.imageView(i).setImageResource(R.mipmap.tyre_black);}
-                        adapter.imageView(i).postInvalidate();
-                    }*/
                 }
             });
         }
-
     }
     public void show_tyre(int tyre_number){
-        tyre_text.setVisibility(View.VISIBLE);
-        for (int i = 0; i < adapter.getItemCount(); i++) {
-            adapter.imageView(i).setBackgroundColor(-16754869);
-            //need to find how to workaround this shit
-        }
-        adapter.imageView(tyre_number).setBackgroundColor(666);
-
-        tyre_description = "Pressure: " + trailers[which_trailer_show].wheels[tyre_number].getPress() + "\n" + "Temperature: " + trailers[which_trailer_show].wheels[tyre_number].getTemp();
-        tyre_text.setText(tyre_description);
+        this.tyre_number = tyre_number;
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                tyre_text.setVisibility(View.VISIBLE);
+                for (int i = 0; i < adapter.getItemCount(); i++) {
+                    adapter.imageView(i).setBackgroundColor(-16754869);
+                    //need to find how to workaround this shit
+                }
+                adapter.imageView(mc.tyre_number).setBackgroundColor(666);
+                which_tyre_show = mc.tyre_number;
+                tyre_description = "Pressure: " + trailers[which_trailer_show].wheels[mc.tyre_number].getPress() + "\n" + "Temperature: " + trailers[which_trailer_show].wheels[mc.tyre_number].getTemp();
+                tyre_text.setText(tyre_description);
+            }
+        });
     }
     public void distribuate_data(int[] intmessage){
         int trailerNo;
@@ -253,8 +246,9 @@ public class MainContainer extends Application {
                 } else if (intmessage[8] == 2) {
                     this.trailers[1].typeoftralier = Trailer.typeoftraliers.TRAILER;
                 }
-                //FF20
-            } else if (intmessage[1] == 'f' && intmessage[2] == 'f' && intmessage[3] == '2' && intmessage[4] == '0') {
+                this.update_trailers();
+            } //FF20
+            else if (intmessage[1] == 'f' && intmessage[2] == 'f' && intmessage[3] == '2' && intmessage[4] == '0') {
                 trailerNo = intmessage[7]-48;//these -48 has to be discussed with server developer
                 if (intmessage[8] == 0) {
                     this.trailers[trailerNo].error = Trailer.errors.NON;
@@ -273,8 +267,11 @@ public class MainContainer extends Application {
                         this.trailers[trailerNo].wheels[j] = trailers[trailerNo].new Wheel();
                     }
                 }
-                //FF30
-            } else if (intmessage[1] == 'f' && intmessage[2] == 'f' && intmessage[3] == '3' && intmessage[4] == '0') {
+                if(intmessage[11]==0){this.trailers[trailerNo].configurationError = false;}
+                else {this.trailers[trailerNo].configurationError = true;}
+                this.update_trailers();
+            } //FF30
+            else if (intmessage[1] == 'f' && intmessage[2] == 'f' && intmessage[3] == '3' && intmessage[4] == '0') {
                 trailerNo = intmessage[7] - 48;//these -48 has to be discussed with server developer
                 for (int i = 0; i < 8; i++) {
                     stat_int = intmessage[(8 + i)] / 64;
@@ -294,13 +291,20 @@ public class MainContainer extends Application {
                             break;
                     }
                 }
-                //FF40
-            } else if (intmessage[1] == 'f' && intmessage[2] == 'f' && intmessage[3] == '4' && intmessage[4] == '0') {
+                if(trailerNo == which_trailer_show){
+                    this.show_trailer();
+                    //perhaps previous task did not finish on time... who knows...
+                    if(which_tyre_show !=-1){
+                        show_tyre(which_tyre_show);
+                    }
+                }
+            } //FF40
+            else if (intmessage[1] == 'f' && intmessage[2] == 'f' && intmessage[3] == '4' && intmessage[4] == '0') {
 
             }
         }
-        this.show_trailer();
-        this.update_trailers();
+        //this.show_trailer();
+        //this.update_trailers();
 
     }
 }

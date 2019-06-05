@@ -106,17 +106,17 @@ public class MainActivity extends BaseActivity implements MyRecyclerViewAdapter.
         mc.tyre_text.setVisibility(View.INVISIBLE);
         mc.which_trailer_show= -1;
 
-        mc.btntrailers[0].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 0"); mc.which_trailer_show = 0; mc.show_trailer();}});
-        mc.btntrailers[1].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 1"); mc.which_trailer_show = 1; mc.show_trailer();}});
-        mc.btntrailers[2].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 2"); mc.which_trailer_show = 2; mc.show_trailer();}});
-        mc.btntrailers[3].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 3"); mc.which_trailer_show = 3; mc.show_trailer();}});
-        mc.btntrailers[4].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 4"); mc.which_trailer_show = 4; mc.show_trailer();}});
-        mc.btntrailers[5].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 5"); mc.which_trailer_show = 5; mc.show_trailer();}});
-        mc.btntrailers[6].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 6"); mc.which_trailer_show = 6; mc.show_trailer();}});
-        mc.btntrailers[7].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 7"); mc.which_trailer_show = 7; mc.show_trailer();}});
-        mc.btntrailers[8].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 8"); mc.which_trailer_show = 8; mc.show_trailer();}});
-        mc.btntrailers[9].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 9"); mc.which_trailer_show = 9; mc.show_trailer();}});
-        mc.btntrailers[10].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 10"); mc.which_trailer_show = 10; mc.show_trailer();}});
+        mc.btntrailers[0].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 0"); if(mc.which_trailer_show != 0){mc.which_trailer_show = 0; mc.which_tyre_show=-1;} mc.show_trailer();}});
+        mc.btntrailers[1].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 1"); if(mc.which_trailer_show != 1){mc.which_trailer_show = 1; mc.which_tyre_show=-1;} mc.show_trailer();}});
+        mc.btntrailers[2].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 2"); if(mc.which_trailer_show != 2){mc.which_trailer_show = 2; mc.which_tyre_show=-1;} mc.show_trailer();}});
+        mc.btntrailers[3].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 3"); if(mc.which_trailer_show != 3){mc.which_trailer_show = 3; mc.which_tyre_show=-1;} mc.show_trailer();}});
+        mc.btntrailers[4].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 4"); if(mc.which_trailer_show != 4){mc.which_trailer_show = 4; mc.which_tyre_show=-1;} mc.show_trailer();}});
+        mc.btntrailers[5].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 5"); if(mc.which_trailer_show != 5){mc.which_trailer_show = 5; mc.which_tyre_show=-1;} mc.show_trailer();}});
+        mc.btntrailers[6].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 6"); if(mc.which_trailer_show != 6){mc.which_trailer_show = 6; mc.which_tyre_show=-1;} mc.show_trailer();}});
+        mc.btntrailers[7].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 7"); if(mc.which_trailer_show != 7){mc.which_trailer_show = 7; mc.which_tyre_show=-1;} mc.show_trailer();}});
+        mc.btntrailers[8].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 8"); if(mc.which_trailer_show != 8){mc.which_trailer_show = 8; mc.which_tyre_show=-1;} mc.show_trailer();}});
+        mc.btntrailers[9].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 9"); if(mc.which_trailer_show != 9){mc.which_trailer_show = 9; mc.which_tyre_show=-1;} mc.show_trailer();}});
+        mc.btntrailers[10].setOnClickListener(new View.OnClickListener() {@Override public void onClick(View w){Log.i(TAG, "Button 10"); if(mc.which_trailer_show != 10){mc.which_trailer_show = 10; mc.which_tyre_show=-1;} mc.show_trailer();}});
 
 //        Runnable clientListen = new ClientListen(mc);
 //        Thread UDPList = new Thread( clientListen );

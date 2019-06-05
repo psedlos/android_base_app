@@ -30,6 +30,7 @@ public class Trailer {
     public enum errors {NON, CCU1, CCU2, CCUs, MPCB}
     errors error;
     Wheel[] wheels;
+    boolean configurationError;
     Trailer() {
         typeoftralier = typeoftraliers.NON;
         numberOfAxles=6;
