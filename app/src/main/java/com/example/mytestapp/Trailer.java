@@ -5,10 +5,11 @@ import android.view.View;
 
 public class Trailer {
     public class Wheel extends Trailer{
-        double temperature=0;
-        double pressure=0;
+        double temperature;
+        double pressure;
         statuses status = statuses.GREEN;
         errors error =errors.NON;
+        boolean selected;
 
         public double getTemp(){return temperature;}
         public double getPress(){return pressure;}
@@ -17,7 +18,13 @@ public class Trailer {
         void updateWheel(double temp, double press, errors err){this.temperature = temp; this.pressure = press; this.error = err;}
         void updateWheel(double temp, double press, errors err, statuses status){this.temperature = temp; this.pressure = press; this.error = err; this.status = status;}
 
-        Wheel() {}
+        Wheel() {
+            temperature = 0;
+            pressure = 0;
+            status = statuses.GREY;
+            error = errors.NON;
+            selected = false;
+        }
     }
 
     public enum typeoftraliers {TRUCK, TRAILER, PLATFORM, NON}
@@ -25,7 +32,7 @@ public class Trailer {
     int numberOfAxles;
     int numberOfWheels;
     boolean turnedAround;
-    public enum statuses {GREEN, ORANGE, RED, BLACK}
+    public enum statuses {GREEN, ORANGE, RED, BLACK, GREY}
     statuses status;
     public enum errors {NON, CCU1, CCU2, CCUs, MPCB}
     errors error;

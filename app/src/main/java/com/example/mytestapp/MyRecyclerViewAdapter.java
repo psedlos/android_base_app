@@ -59,6 +59,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         } else {
             mImageViews[position].setImageResource(R.mipmap.grey_tyre);
         }
+        if(wheels[position].selected){mImageViews[position].setBackgroundColor(666);}
 
 
     }

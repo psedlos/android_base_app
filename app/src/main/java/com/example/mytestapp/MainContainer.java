@@ -207,6 +207,9 @@ public class MainContainer extends Application {
             new Handler(Looper.getMainLooper()).post(new Runnable() {
                 @Override
                 public void run() {
+                    for (int i =0 ; i<trailers[which_trailer_show].wheels.length ; i++){
+                        trailers[which_trailer_show].wheels[i].selected=false;
+                    }
                     recyclerView.setVisibility(View.VISIBLE);
                     tyre_text.setVisibility(View.INVISIBLE);
                     adapter.updateNumberOfGrids(trailers[which_trailer_show].wheels);
@@ -216,17 +219,45 @@ public class MainContainer extends Application {
             });
         }
     }
-    public void show_tyre(int tyre_number){
+    public void show_trailer(int tyre_number) {
+        recyclerView.invalidateItemDecorations();
+        if (this.which_trailer_show<0 || this.which_trailer_show >11) {
+            recyclerView.setVisibility(View.INVISIBLE);
+        }
+        else{
+            new Handler(Looper.getMainLooper()).post(new Runnable() {
+                @Override
+                public void run() {
+                    recyclerView.setVisibility(View.VISIBLE);
+                    adapter.updateNumberOfGrids(trailers[which_trailer_show].wheels);
+                    recyclerView.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
+                    tyre_text.setVisibility(View.VISIBLE);
+                    //adapter.imageView(mc.tyre_number).setBackgroundColor(666);
+                    //adapter.
+                    mc.which_tyre_show = mc.tyre_number;
+                    tyre_description = "Pressure: " + trailers[which_trailer_show].wheels[mc.tyre_number].getPress() + "\n" + "Temperature: " + trailers[which_trailer_show].wheels[mc.tyre_number].getTemp();
+                    tyre_text.setText(tyre_description);
+                }
+            });
+        }
+    }
+    public void show_tyre(final int tyre_number){
         this.tyre_number = tyre_number;
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
                 tyre_text.setVisibility(View.VISIBLE);
-                for (int i = 0; i < adapter.getItemCount(); i++) {
-                    adapter.imageView(i).setBackgroundColor(-16754869);
+                //for (int i = 0; i < adapter.getItemCount(); i++) {
+                //    adapter.imageView(i).setBackgroundColor(-16754869);
                     //need to find how to workaround this shit
+                //}
+                for (int i =0 ; i<trailers[which_trailer_show].wheels.length ; i++){
+                    trailers[which_trailer_show].wheels[i].selected=false;
                 }
-                adapter.imageView(mc.tyre_number).setBackgroundColor(666);
+                //adapter.imageView(mc.tyre_number).setBackgroundColor(666);
+                trailers[which_trailer_show].wheels[tyre_number].selected=true;
+                adapter.notifyDataSetChanged();
                 which_tyre_show = mc.tyre_number;
                 tyre_description = "Pressure: " + trailers[which_trailer_show].wheels[mc.tyre_number].getPress() + "\n" + "Temperature: " + trailers[which_trailer_show].wheels[mc.tyre_number].getTemp();
                 tyre_text.setText(tyre_description);
@@ -292,10 +323,10 @@ public class MainContainer extends Application {
                     }
                 }
                 if(trailerNo == which_trailer_show){
-                    this.show_trailer();
-                    //perhaps previous task did not finish on time... who knows...
                     if(which_tyre_show !=-1){
-                        show_tyre(which_tyre_show);
+                        show_trailer(which_tyre_show);
+                    } else {
+                        show_trailer();
                     }
                 }
             } //FF40
