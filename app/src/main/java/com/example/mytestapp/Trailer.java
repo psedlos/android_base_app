@@ -1,9 +1,10 @@
 package com.example.mytestapp;
 
+import android.app.Application;
 import android.graphics.Color;
 import android.view.View;
 
-public class Trailer {
+public class Trailer extends Application {
     public class Wheel extends Trailer{
         double temperature;
         double pressure;
@@ -38,6 +39,7 @@ public class Trailer {
     errors error;
     Wheel[] wheels;
     boolean configurationError;
+    boolean selected;
     Trailer() {
         typeoftralier = typeoftraliers.NON;
         numberOfAxles=6;

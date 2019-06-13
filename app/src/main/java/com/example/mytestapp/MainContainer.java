@@ -29,6 +29,8 @@ import android.widget.NumberPicker;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
+import java.io.StringBufferInputStream;
+
 import static com.example.mytestapp.BaseActivity.mc;
 //import android.support.design.R;
 
@@ -48,6 +50,8 @@ public class MainContainer extends Application {
     RecyclerView recyclerView;
     Context mainActivityContext;
     MyRecyclerViewAdapter.ItemClickListener mainActivityItemClickListener;
+    ClientSend send;
+
 
     public void mainContainerFeed(MyRecyclerViewAdapter adapter, RecyclerView recyclerView, Context mainActivityContext, MyRecyclerViewAdapter.ItemClickListener mainActivityItemClickListener) {
         if(this.trailers == null){
@@ -215,11 +219,12 @@ public class MainContainer extends Application {
                     adapter.updateNumberOfGrids(trailers[which_trailer_show].wheels);
                     recyclerView.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
+                    which_tyre_show = -1;
                 }
             });
         }
     }
-    public void show_trailer(int tyre_number) {
+    public void show_trailer(final int tyre_number) {
         recyclerView.invalidateItemDecorations();
         if (this.which_trailer_show<0 || this.which_trailer_show >11) {
             recyclerView.setVisibility(View.INVISIBLE);
@@ -233,9 +238,7 @@ public class MainContainer extends Application {
                     recyclerView.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
                     tyre_text.setVisibility(View.VISIBLE);
-                    //adapter.imageView(mc.tyre_number).setBackgroundColor(666);
-                    //adapter.
-                    mc.which_tyre_show = mc.tyre_number;
+                    trailers[which_trailer_show].wheels[tyre_number].selected=true;
                     tyre_description = "Pressure: " + trailers[which_trailer_show].wheels[mc.tyre_number].getPress() + "\n" + "Temperature: " + trailers[which_trailer_show].wheels[mc.tyre_number].getTemp();
                     tyre_text.setText(tyre_description);
                 }
@@ -248,21 +251,17 @@ public class MainContainer extends Application {
             @Override
             public void run() {
                 tyre_text.setVisibility(View.VISIBLE);
-                //for (int i = 0; i < adapter.getItemCount(); i++) {
-                //    adapter.imageView(i).setBackgroundColor(-16754869);
-                    //need to find how to workaround this shit
-                //}
                 for (int i =0 ; i<trailers[which_trailer_show].wheels.length ; i++){
                     trailers[which_trailer_show].wheels[i].selected=false;
                 }
-                //adapter.imageView(mc.tyre_number).setBackgroundColor(666);
                 trailers[which_trailer_show].wheels[tyre_number].selected=true;
+                which_tyre_show = tyre_number;
                 adapter.notifyDataSetChanged();
-                which_tyre_show = mc.tyre_number;
                 tyre_description = "Pressure: " + trailers[which_trailer_show].wheels[mc.tyre_number].getPress() + "\n" + "Temperature: " + trailers[which_trailer_show].wheels[mc.tyre_number].getTemp();
                 tyre_text.setText(tyre_description);
             }
         });
+        new ClientSend().sendText("1234");
     }
     public void distribuate_data(int[] intmessage){
         int trailerNo;

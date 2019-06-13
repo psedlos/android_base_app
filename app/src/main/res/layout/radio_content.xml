@@ -26,10 +26,10 @@
     <com.example.mytestapp.VerticalSeekBar
         android:id="@+id/seekBar1"
         android:layout_width="51dp"
-        android:layout_height="346dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_height="240dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -84,4 +84,12 @@
         app:layout_constraintEnd_toEndOf="@+id/seekBar2"
         app:layout_constraintStart_toStartOf="@+id/seekBar2"
         app:layout_constraintTop_toBottomOf="@+id/seekBar2" />
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="382dp"
+        android:layout_height="320dp"
+        app:layout_constraintEnd_toEndOf="@+id/button3"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/button3" />
 </android.support.constraint.ConstraintLayout>
